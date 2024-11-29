@@ -123,7 +123,7 @@ header-action-btn{
 .intro-section{
     position: relative;
    min-height: 85vh;
-    background: linear-gradient(to right, white, #DBE9FB);
+    background: linear-gradient(to right, white, #dbe9fb);
 }
 
 .intro-desc{
@@ -168,10 +168,10 @@ header-action-btn{
     margin: 0 auto; /* Center the section */
     border: 1px solid #ccc; /* Add a border */
     border-radius: 10px; /* Round the corners */
-    padding: 50px; /* Add padding inside the section */
+    padding: 40px; /* Add padding inside the section */
     position: absolute;
     left: 10%;
-    bottom: -90%;
+    bottom: -110%;
     background-color: white;
   }
   
@@ -207,9 +207,19 @@ header-action-btn{
     color: #666;
   }
 
-  .pdf-tools-explore-btn{
-    
+  .pdf-tools-action-btn{
+    text-align: center;
   }
+
+  .pdf-tools-explore-btn{
+    display: inline-block;
+  }
+
+  .tool img{
+    width: 50px;
+    height: 50px;
+  }
+
   
   /* .explore-all {
     display: inline-block;
