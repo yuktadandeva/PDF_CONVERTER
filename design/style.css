@@ -232,13 +232,10 @@ header-action-btn{
 
   /* features carousel */
   .features-carousel-section{
-    height: 80vh;
+    height: 150vh;
     background-color: #f9f9ff;
     text-align: center;
     padding: 50px 20px;
-  }
-  .pdf-tools-section {
-    
   }
   
   .section-heading {
@@ -248,11 +245,6 @@ header-action-btn{
     margin-bottom: 40px;
   }
   
-  .carousel-container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
   .tools-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -260,20 +252,20 @@ header-action-btn{
     justify-items: center;
   }
   
-  .tool {
+  .tool-carousel-atn {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
   }
   
-  .tool img {
+  .tool-carousel-atn img {
     width: 60px;
     height: 60px;
     margin-bottom: 10px;
   }
   
-  .tool p {
+  .tool-carousel-atn p {
     font-size: 1rem;
     color: #666;
   }
@@ -296,6 +288,44 @@ header-action-btn{
   .badge.hot {
     background: linear-gradient(to right, #ff8a00, #ff3e00);
   }
+
+  /* carousel */
+  .carousel-item{
+    flex: 0 0 100%;
+    /* width: 1000px; */
+    padding: 10px;
+    position: relative;
+    /* flex-shrink: 0; */
+    height: 55vh;
+    background-color: white;
+  }
+
+  .carousel-item-desc{
+    position: absolute;
+    text-align: left;
+    top: 20%;
+    left: 5%;
+
+  }
+
+  .carousel-item-img{
+    width: 600px;
+    position: absolute;
+    right: 0%;
+  }
+
+  .carousel-inner{
+    width: 100%;
+    display: flex; 
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .carousel-container {
+    max-width: 1200px;
+    margin: 30px;
+    overflow: hidden;
+  }
+
   
 
   /* footer section */
