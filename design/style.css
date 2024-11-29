@@ -1,6 +1,7 @@
 *{
     padding: 0;
     margin: 0;
+    font-family: "Raleway", sans-serif;
     box-sizing: border-box;
 }
 
@@ -18,8 +19,21 @@ a{
     color: black;
 }
 
+img{
+    height: 100%;
+    width: 100%;
+}
+
+.text-align{
+    text-align: center;
+}
+
 .justify-content{
     justify-content: space-between;
+}
+
+.justify-content-around{
+    justify-content: space-around;
 }
 
 .align-items{
@@ -28,6 +42,7 @@ a{
 
 .btn-primary{
     padding: 7px 13px;
+    margin: 5px;
     border: 2px solid darkblue;
     border-radius: 5px;
     background-color: white;
@@ -35,10 +50,18 @@ a{
 
 .btn-secondary{
     padding: 7px 13px;
+    margin: 5px;
     border: 2px solid darkblue;
     border-radius: 5px;
     background-color: darkblue;
     color: white;
+}
+
+.btn-tertiary{
+    padding: 7px 13px;
+    border: none;
+    background-color: transparent;
+    color: darkblue;
 }
 
 /* component classes */
@@ -54,6 +77,15 @@ input{
 }
 
 /* custom classes */
+
+.container {
+    min-height: 100vh; /* Ensure the container takes up at least the full viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center the content */
+}
+
+
 /* header */
 .nav-container{
     position: relative;
@@ -65,7 +97,7 @@ ul li{
 .search-input{
     position: absolute;
     width: 100%;
-    opacity: 0;
+    display: none;
 }
 
 .visible{
@@ -77,7 +109,117 @@ ul li{
     border: none;
 }
 
+header-action-btn{
+    position: relative;
+}
 
+.user-icon{
+    position: absolute;
+    right: 5%;
+    display: none;
+}
+
+/* intro section */
+.intro-section{
+    position: relative;
+   min-height: 85vh;
+    background: linear-gradient(to right, white, #DBE9FB);
+}
+
+.intro-desc{
+    position: absolute;
+    left: 10%;
+    top: 20%;
+}
+
+.intro-section .intro-desc h1{
+    font-size: 3rem;
+}
+
+.intro-img{
+    height: 300px;
+    width: 550px;
+    position: absolute;
+    top: 20%;
+    right: 10%;
+}
+
+.intro-sub-img{
+    height: 120px;
+    width: 230px;
+    background-color: white;
+    position: absolute;
+    right: 31%;
+    top: 33%;
+    border: 2px solid pink;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px 5px rgba(245, 148, 200, 0.3);;
+}
+
+.intro-section h3{
+    position: absolute;
+    left: 10%;
+    top: 10%;
+}
+
+/* features section */
+.pdf-tools {
+    width: 80%;
+    margin: 0 auto; /* Center the section */
+    border: 1px solid #ccc; /* Add a border */
+    border-radius: 10px; /* Round the corners */
+    padding: 50px; /* Add padding inside the section */
+    position: absolute;
+    left: 10%;
+    bottom: -90%;
+    background-color: white;
+  }
+  
+  .tool-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .tool {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    width: 200px;
+  }
+  
+  .tool img {
+    max-width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .tool h4 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .tool p {
+    font-size: 14px;
+    color: #666;
+  }
+
+  .pdf-tools-explore-btn{
+    
+  }
+  
+  /* .explore-all {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 20px;
+  } */
 
 /* tablets and below */
 @media (max-width: 768px) {
@@ -85,7 +227,12 @@ ul li{
         padding: 10px;
         border-bottom: 1px solid black;
     }
-    .nav-container{
-        display: none;
+
+    .btn-primary,.btn-secondary,.nav-container{
+        display: block;
+    }
+
+    .user-icon{
+        display: block;
     }
 }
