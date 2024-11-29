@@ -31,8 +31,7 @@ function triggerUpload(){
 
     fileInput.addEventListener('change', function(){
         if (fileInput.files.length > 0) {
-            // Redirect after file upload
-            window.location.href = ''; // Replace with your desired URL
+            window.location.href = '/PDF_CONVERTER/desktop.html'; 
         }
     });
     
