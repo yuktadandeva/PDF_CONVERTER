@@ -232,7 +232,7 @@ header-action-btn{
 
   /* features carousel */
   .features-carousel-section{
-    height: 150vh;
+    height: 110vh;
     background-color: #f9f9ff;
     text-align: center;
     padding: 50px 20px;
@@ -257,6 +257,12 @@ header-action-btn{
     flex-direction: column;
     align-items: center;
     text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    width: 200px;
   }
   
   .tool-carousel-atn img {
@@ -317,7 +323,7 @@ header-action-btn{
   .carousel-inner{
     width: 100%;
     display: flex; 
-    transition: transform 0.5s ease-in-out;
+    transition: transform 1s ease-in-out;
   }
 
   .carousel-container {
@@ -326,8 +332,49 @@ header-action-btn{
     overflow: hidden;
   }
 
-  
+  /* review section*/
+  .review-carousel-container{
+    border: 1px solid black;
+    height: 50vh;
+    max-width: 1200px;
+    margin: 30px;
+    overflow: hidden;
+  }
 
+  .review-inner{
+    width: 80%;
+    transition: transform 1s ease-in-out;
+  }
+
+  .review-img{
+    width: 20%;
+    overflow: hidden;
+    position: absolute;
+    border-radius: 50%;
+    left: 5%;
+  }
+
+  .review-item{
+    padding: 15px;
+    position: relative;
+    width: 60%;
+    height: 250px;
+    /* border: 1px solid black; */
+    border-radius: 25px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .review-nametag{
+    position: absolute;
+    top: 20%;
+    left: 30%;
+  }
+
+  .review-desc{
+    position: absolute;
+    bottom: 20%;
+    left: 8%;
+  }
   /* footer section */
   
   footer {

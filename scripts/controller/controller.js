@@ -15,7 +15,7 @@ function handleCarousel(){
     }
 
     toolDivs.forEach((div,idx )=> {
-        div.addEventListener('click',function(){goToSlide(idx)});
+        div.addEventListener('mouseenter',function(){goToSlide(idx)});
     });
 
     goToSlide(0);
