@@ -94,6 +94,7 @@ input{
 ul li{
     padding: 10px;
 }
+
 .search-input{
     position: absolute;
     width: 100%;
@@ -143,6 +144,19 @@ header-action-btn{
     top: 10%;
     right: 10%;
 }
+.intro-img:hover .intro-img-hover{
+        animation: fadeIn 1s ease-in forwards;
+    }
+
+    @keyframes fadeIn {
+        0% {
+          opacity: 0.5; /* Start fully transparent */
+        }
+        100% {
+          opacity: 1; /* Fully visible */
+        }
+      }
+
 
 .intro-sub-img{
     height: 120px;
@@ -160,6 +174,36 @@ header-action-btn{
     position: absolute;
     left: 10%;
     top: 5%;
+}
+
+.intro-img-hover{
+    width: 350px;
+    height: 250px;
+    background-color: white;
+    position: absolute;
+    top: 8%;
+    left: 20%;
+    border-radius: 15px;
+    border: 2px solid palevioletred;
+    /* position: relative; */
+    opacity: 0;
+}
+
+.intro-img-hover-inp{
+position: absolute;
+top: 30%;
+left: 40%;
+}
+
+.intro-img-hover-inp input{
+    display: none;
+    }
+    
+
+.intro-img-hover-desc{
+    position: absolute;
+    bottom: 35%;
+    left: 25%;
 }
 
 /* features section */
@@ -499,5 +543,5 @@ header-action-btn{
         display: block;
     }
 
-    
+
 }

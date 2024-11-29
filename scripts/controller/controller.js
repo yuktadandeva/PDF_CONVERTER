@@ -3,6 +3,7 @@ window.addEventListener('DOMContentLoaded',bindEvents);
 
 function bindEvents(){
     handleCarousel();
+    triggerUpload();
 }
 
 function handleCarousel(){
@@ -19,4 +20,10 @@ function handleCarousel(){
     });
 
     goToSlide(0);
+}
+
+function triggerUpload(){
+    document.querySelector('.triggerUpload').addEventListener('click', function(){
+        document.querySelector('.inputToBeTriggered').click();
+    })
 }

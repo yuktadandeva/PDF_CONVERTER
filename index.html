@@ -10,7 +10,8 @@
       href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
       rel="stylesheet"
     />
-    <title>Document</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <title>pdf-converter</title>
     <script type="module" src="scripts/controller/controller.js"></script>
   </head>
   <body>
@@ -106,6 +107,19 @@
             <div class="intro-sub-img flex justify-content-around align-items">
               <button class="btn-secondary">Edit PDF Files</button>
               <!-- <p>Upload your files to edit</p> -->
+            </div>
+
+            <div class="intro-img-hover">
+                <div class="intro-img-hover-inp">
+                    <input class="inputToBeTriggered" type="file" id="pdfInput" accept="application/pdf" />
+                    <div class="triggerUpload">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="60" height="60" color="#000000" fill="none">
+                        <path d="M2.5 12C2.5 7.52166 2.5 5.28249 3.89124 3.89124C5.28249 2.5 7.52166 2.5 12 2.5C16.4783 2.5 18.7175 2.5 20.1088 3.89124C21.5 5.28249 21.5 7.52166 21.5 12C21.5 16.4783 21.5 18.7175 20.1088 20.1088C18.7175 21.5 16.4783 21.5 12 21.5C7.52166 21.5 5.28249 21.5 3.89124 20.1088C2.5 18.7175 2.5 16.4783 2.5 12Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                        <path d="M12 8V16M16 12H8" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+                </div>
+                <p class="intro-img-hover-desc">Upload your PDFs to Edit</p>
             </div>
           </div>
 
