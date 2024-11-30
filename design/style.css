@@ -181,7 +181,7 @@ header-action-btn{
 
 /* intro section */
 .intro-section{
-  background: linear-gradient(to right, #e3edfc 15%, #f3f7fa 45%, #dbe9fb 60%,#dbe9fb 80%,  #eef4fa 100%);
+  background: linear-gradient(to right, #DBE9FB 15%, #f3f7fa 45%, #DBE9FB 60%,#dbe9fb 80%,  #eef4fa 100%);
 }
 
 .intro-grid-container{
@@ -233,9 +233,9 @@ header-action-btn{
 
 
 .intro-sub-img{
-    height: 120px;
-    width: 230px;
-    background-color: white;
+    height: 140px;
+    width: 220px;
+    background-color: #F3F6FB;
     display: grid;
     place-items: center;
     position: absolute;
@@ -251,7 +251,7 @@ header-action-btn{
 
 .intro-sub-img p{
   font-size: small;
-  margin: 6px;
+  margin: 10px;
 }
 /* .intro-img-hover::after{
   content: '';
@@ -277,33 +277,56 @@ header-action-btn{
 
 .btn-special{
   place-self: center;
-  width: 65%;
-  height: 6vh;
+  width: 100%;
+  height: 7vh;
   margin: auto auto;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  background: linear-gradient(90deg, #ff00cc, #3333ff);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3), 0 4px 15px rgba(0, 0, 255, 0.2);
+}
+
+.parallelogram {
+  position: absolute;
+  top: 0;
+  width: 35px;
+  height: 7vh;
+  background-color: rgba(255, 255, 255, 0.406);
+  transform: skew(-20deg);
+  animation: shine 3s ease infinite;
+}
+
+@keyframes shine {
+  0%{
+    transform: skew(-20deg) translateX(0);
+  }100%{
+    transform:skew(-20deg) translateX(165px);
+  }
 }
 
 .triggerUpload{
-  border: 3px dashed rgba(255, 255, 255, 0.7);;
-  background-color: #A35EFA;
-  padding: 3px;
+  width: 100px;
 }
 
 .intro-img-hover{
-    width: 350px;
-    height: 250px;
+    width: 380px;
+    height: 200px;
     background-color: white;
     position: absolute;
-    top: 8%;
-    left: 20%;
+    top: 21%;
+    left: 19%;
     border-radius: 15px;
     background: linear-gradient(90deg, #5A42FD, #F572E4);
     opacity: 0;
 }
 
 .intro-img-hover-inp{
-position: absolute;
-top: 30%;
-left: 40%;
+width: 100%;
+height: 100%;
 }
 
 .intro-img-hover-inp input{
