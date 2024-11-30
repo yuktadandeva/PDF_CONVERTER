@@ -61,20 +61,29 @@ document.querySelector('.closeLoginPopUp').addEventListener('click', function(){
     document.querySelector('.login-section').style.display = 'none';
 })
 
-document.querySelector('.login-atn').addEventListener('click',()=> performLoginAuthentication());
+document.querySelector('#login-atn').addEventListener('click',()=> performLoginAuthentication());
 }
 
-function performLoginAuthentication(){
+async function performLoginAuthentication(){
     let email = document.querySelector('.email-address').value ;
     let pswd = document.querySelector('.password').value;
     
     let user = {email,pswd};
-
-    try{
-
-    }catch{
-        
-    }
+    console.log("login info", user);
+    isLoggedIn = true;
+    // try{
+    //     const response = await axios.post(url,{
+    //       user
+    //     })
+    //     if(response.status == 200){
+    //         isLoggedIn = true;
+    //     }else{
+    //         alert("wrong credentials");
+    //     }
+         
+    //    }catch(err){
+    //     alert("error in login ", err)
+    //    }
 }
 
 // event.preventDefault();
