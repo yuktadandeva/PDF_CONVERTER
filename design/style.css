@@ -74,6 +74,7 @@ input{
     border-radius: 10px;
     height: 24px;
     padding: 13px;
+ 
 }
 
 /* custom classes */
@@ -85,6 +86,46 @@ input{
     justify-content: center; /* Vertically center the content */
 }
 
+/* login pop up */
+.login-section{
+  display: none;
+}
+.loginPopUp{
+  border: 0.5px solid black;
+  width: 80%;
+  height: 80%;
+  background-color: white;
+  box-shadow: 0 5px 5px rgba(32, 32, 32, 0.669);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 5;
+  display: grid;
+  place-items: center;
+}
+
+.loginPopUp input{
+ margin: 10px;
+  border: 0.1px solid black;
+  /* border: none; */
+  border-radius: 5px;
+    height: 30px;
+    font-size: large;
+    padding: 13px;
+}
+
+.closeLoginPopUp{
+  position: absolute;
+  right: 5%;
+  top: 5%;
+}
+
+
+
+.loginIcons{
+  margin: 10px;
+}
 
 /* header */
 .nav-container{
