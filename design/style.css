@@ -180,6 +180,69 @@ header-action-btn{
 }
 
 /* intro section */
+/* tablets and below */
+@media (max-width: 768px) {
+  *{
+    font-size: small;
+  }
+  header{
+      padding: 10px;
+      border-bottom: 1px solid black;
+  }
+
+  .intro-grid-container{
+    display: block !important; 
+  }
+
+  .intro-group{
+   padding: 30px;
+  }
+
+  .btn-primary,.btn-secondary,.nav-container{
+      display: none;
+  }
+
+  .user-icon{
+      display: block;
+  }
+
+  .intro-img img{
+    width: 330px;
+    margin: 20px;
+  }
+
+  .intro-sub-img{
+    position: absolute;
+    right: 0%;
+    top: 0%;
+  }
+  /* pdf tools */
+  .tool{
+    display: flex;
+    width: 100% !important;
+    padding: 0px;
+  }
+
+  .pdf-tools{
+    grid-column: auto;
+    margin: 0 !important;
+    padding: 30px 10px !important;
+    width: 100%;
+  }
+  .tool-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2px;
+  }
+
+  .tool img {
+    max-width: 100%;
+    margin-bottom: 5px;
+  }
+
+
+}
 .intro-section{
   background: linear-gradient(to right, #DBE9FB 15%, #f3f7fa 45%, #DBE9FB 60%,#dbe9fb 80%,  #eef4fa 100%);
 }
@@ -208,7 +271,7 @@ header-action-btn{
   }
 
 .intro-img{
-    width: 600px;
+    max-width: 600px;
     position: relative;
 }
 
@@ -310,6 +373,7 @@ header-action-btn{
 
 .triggerUpload{
   width: 100px;
+  place-self: center;
 }
 
 .intro-img-hover{
@@ -336,9 +400,9 @@ height: 100%;
 
 .intro-img-hover-desc{
     color: white;
-    position: absolute;
+    /* position: absolute;
     bottom: 35%;
-    left: 25%;
+    left: 25%; */
 }
 
 /* features section */
@@ -349,7 +413,7 @@ height: 100%;
     border: 1px solid #ccc; /* Add a border */
     border-radius: 10px; /* Round the corners */
     padding: 35px; /* Add padding inside the section */
-  grid-column: span 2;
+    grid-column: span 2;
     background-color: white;
   }
   
@@ -667,20 +731,3 @@ height: 100%;
   }
   
 
-/* tablets and below */
-@media (max-width: 768px) {
-    header{
-        padding: 10px;
-        border-bottom: 1px solid black;
-    }
-
-    .btn-primary,.btn-secondary,.nav-container{
-        display: none;
-    }
-
-    .user-icon{
-        display: block;
-    }
-
-
-}
