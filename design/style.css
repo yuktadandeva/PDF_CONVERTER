@@ -203,14 +203,17 @@ header-action-btn{
         animation: fadeIn 1s ease-in forwards;
     }
 
-    @keyframes fadeIn {
-        0% {
-          opacity: 0.5; /* Start fully transparent */
-        }
-        100% {
+@keyframes fadeIn {
+    0% {
+          opacity: 0; /* Start fully transparent */
+    }
+    20%{
+      opacity: 1;
+    }
+    100% {
           opacity: 1; /* Fully visible */
-        }
-      }
+    }
+}
 
 
 .intro-sub-img{
@@ -220,9 +223,29 @@ header-action-btn{
     position: absolute;
     right: 31%;
     top: 33%;
-    border: 2px solid pink;
+    border: 1.5px solid transparent;
+    box-shadow: ;
     border-radius: 10px;
-    box-shadow: 5px 5px 15px 5px rgba(245, 148, 200, 0.3);;
+    border-image: linear-gradient(90deg, #ff00cc, #3333ff) 1;
+    animation: move-border 3s infinite;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3), 0 4px 15px rgba(0, 0, 255, 0.2);
+}
+@keyframes move-border {
+  0% {
+    border-image-source: linear-gradient(90deg, #ff00cc, #3333ff);
+  }
+  50% {
+    border-image-source: linear-gradient(90deg, #3333ff, #ff00cc);
+  }
+  100% {
+    border-image-source: linear-gradient(90deg, #ff00cc, #3333ff);
+  }
+}
+
+.triggerUpload{
+  border: 3px dashed rgba(255, 255, 255, 0.7);;
+  background-color: #A35EFA;
+  padding: 3px;
 }
 
 .intro-section h3{
@@ -239,8 +262,7 @@ header-action-btn{
     top: 8%;
     left: 20%;
     border-radius: 15px;
-    border: 2px solid palevioletred;
-    /* position: relative; */
+    background: linear-gradient(90deg, #5A42FD, #F572E4);
     opacity: 0;
 }
 
@@ -252,10 +274,11 @@ left: 40%;
 
 .intro-img-hover-inp input{
     display: none;
-    }
+}
     
 
 .intro-img-hover-desc{
+    color: white;
     position: absolute;
     bottom: 35%;
     left: 25%;
@@ -264,10 +287,11 @@ left: 40%;
 /* features section */
 .pdf-tools {
     width: 80%;
+    height: auto;
     margin: 0 auto; /* Center the section */
     border: 1px solid #ccc; /* Add a border */
     border-radius: 10px; /* Round the corners */
-    padding: 40px; /* Add padding inside the section */
+    padding: 35px; /* Add padding inside the section */
     position: absolute;
     left: 10%;
     bottom: 2%;
@@ -291,9 +315,8 @@ left: 40%;
     
   }
   .tool:hover{
-    border: 1.5px solid transparent; 
+    border: 1.5px solid #3333ff; 
     border-radius: 20px;
-    border-image: linear-gradient(to top left, #ff00cc, #3333ff) 1;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3), 0 4px 15px rgba(0, 0, 255, 0.2);
   }
   
@@ -404,10 +427,8 @@ left: 40%;
   /* carousel */
   .carousel-item{
     flex: 0 0 100%;
-    /* width: 1000px; */
     padding: 10px;
     position: relative;
-    /* flex-shrink: 0; */
     height: 55vh;
     background-color: white;
   }
@@ -443,7 +464,7 @@ left: 40%;
     height: 50vh;
     max-width: 1200px;
     margin: 30px;
-    overflow: hidden;
+    /* overflow: hidden; */
   }
 
   .review-inner{
@@ -461,9 +482,10 @@ left: 40%;
   }
 
   .review-item{
+    flex: 0 0 60%;
     padding: 15px;
     position: relative;
-    width: 60%;
+    margin: 20px;
     height: 250px;
     /* border: 1px solid black; */
     border-radius: 25px;
