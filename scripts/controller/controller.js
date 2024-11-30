@@ -35,7 +35,7 @@ function triggerUpload(){
         if (fileInput.files.length > 0 ) {
             window.location.href = '/PDF_CONVERTER/desktop.html'; 
         }}else{
-            loginPopUp();
+            loginPopUp(true);  
         }
     });
     
@@ -54,23 +54,32 @@ function handleLogin() {
 }
 
 
-function loginPopUp(){
+function loginPopUp(redirectAfterLogin = false){
 document.querySelector('.login-section').style.display = "block";
+console.log(redirectAfterLogin+"inside loginpopup");
 
 document.querySelector('.closeLoginPopUp').addEventListener('click', function(){
     document.querySelector('.login-section').style.display = 'none';
 })
 
-document.querySelector('#login-atn').addEventListener('click',()=> performLoginAuthentication());
+document.querySelector('#login-atn').addEventListener('click',(redirectAfterLogin)=> performLoginAuthentication(redirectAfterLogin));
 }
 
-async function performLoginAuthentication(){
+// async
+ function performLoginAuthentication(redirectAfterLogin){
     let email = document.querySelector('.email-address').value ;
     let pswd = document.querySelector('.password').value;
     
     let user = {email,pswd};
     console.log("login info", user);
     isLoggedIn = true;
+
+    if(redirectAfterLogin){
+  
+            window.location.href ='/PDF_CONVERTER/desktop.html'; 
+    
+    }
+    return;
     // try{
     //     const response = await axios.post(url,{
     //       user
