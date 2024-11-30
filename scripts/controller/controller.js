@@ -1,5 +1,6 @@
 // handling the features-carousel
 window.addEventListener('DOMContentLoaded',bindEvents);
+
 let isLoggedIn = false;
 function bindEvents(){
     handleCarousel();
@@ -45,7 +46,7 @@ function handleLogin() {
     const loginButton = document.querySelector('.login-popUp');
     if (loginButton) {
         loginButton.addEventListener('click', (event) => {
-            event.preventDefault(); // Prevent the form from submitting
+            event.preventDefault(); 
             loginPopUp();
         });
     } else {
@@ -55,6 +56,7 @@ function handleLogin() {
 
 
 function loginPopUp(redirectAfterLogin = false){
+
 document.querySelector('.login-section').style.display = "block";
 console.log(redirectAfterLogin+"inside loginpopup");
 
@@ -62,7 +64,7 @@ document.querySelector('.closeLoginPopUp').addEventListener('click', function(){
     document.querySelector('.login-section').style.display = 'none';
 })
 
-document.querySelector('#login-atn').addEventListener('click',(redirectAfterLogin)=> performLoginAuthentication(redirectAfterLogin));
+document.querySelector('#login-atn').addEventListener('click',()=> performLoginAuthentication());
 }
 
 // async

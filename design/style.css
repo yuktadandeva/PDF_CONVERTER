@@ -46,6 +46,13 @@ img{
     border: 2px solid darkblue;
     border-radius: 5px;
     background-color: white;
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
+}
+.btn-primary:hover{
+    background-color: darkblue;
+    color: white;
+    transform: scale(1.05);
 }
 
 .btn-secondary{
@@ -55,6 +62,14 @@ img{
     border-radius: 5px;
     background-color: darkblue;
     color: white;
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.btn-secondary:hover{
+  color: rgb(177, 177, 177);
+  transform: scale(1.05);
+
 }
 
 .btn-tertiary{
@@ -90,6 +105,7 @@ input{
 .login-section{
   display: none;
 }
+
 .loginPopUp{
   border: 0.5px solid black;
   width: 80%;
@@ -120,8 +136,6 @@ input{
   right: 5%;
   top: 5%;
 }
-
-
 
 .loginIcons{
   margin: 10px;
@@ -269,11 +283,18 @@ left: 40%;
   
   .tool {
     background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    border: 0.5px solid #EFF1FC;
     padding: 20px;
     text-align: center;
     width: 200px;
+    
+  }
+  .tool:hover{
+    border: 1.5px solid transparent; 
+    border-radius: 20px;
+    border-image: linear-gradient(to top left, #ff00cc, #3333ff) 1;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3), 0 4px 15px rgba(0, 0, 255, 0.2);
   }
   
   .tool img {
@@ -419,7 +440,6 @@ left: 40%;
 
   /* review section*/
   .review-carousel-container{
-    border: 1px solid black;
     height: 50vh;
     max-width: 1200px;
     margin: 30px;
@@ -427,7 +447,8 @@ left: 40%;
   }
 
   .review-inner{
-    width: 80%;
+    width: 100%;
+    display: flex;
     transition: transform 1s ease-in-out;
   }
 
