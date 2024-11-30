@@ -73,7 +73,7 @@ img{
 }
 
 .btn-tertiary{
-    padding: 7px 13px;
+    /* padding: 7px 13px; */
     border: none;
     background-color: transparent;
     color: darkblue;
@@ -116,7 +116,7 @@ input{
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  z-index: 5;
+  z-index: 1;
   display: grid;
   place-items: center;
 }
@@ -146,7 +146,7 @@ input{
     position: relative;
 }
 
-ul li{
+header ul li{
     padding: 10px;
 }
 
@@ -177,35 +177,39 @@ header-action-btn{
 
 /* intro section */
 .intro-section{
-    /* position: relative; */
-    /* padding: 40px; */
-    /* height: 180vh; */
-    background: linear-gradient(to right, white, #dbe9fb);
+  background: linear-gradient(to right, #e3edfc 15%, #f3f7fa 45%, #dbe9fb 60%,#dbe9fb 80%,  #eef4fa 100%);
 }
 
 .intro-grid-container{
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1.5fr;
+  grid-template-rows: 1.7fr 2fr;
   place-items: center;
 }
 
-.intro-desc{
-    /* position: absolute;
-    left: 10%;
-    top: 10%; */
-}
-
+/* .intro-group{
+ justify-self: end;
+} */
 .intro-section .intro-desc h1{
-    font-size: 3rem;
+    font-size: 3.5rem;
 }
+.intro-desc ul li button{
+  margin: 10px 0;
+}
+.intro-desc-AI{
+    color: transparent; /* Ensure text is transparent */
+    background: linear-gradient(to right, #3333ff, #ff00cc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 
 .intro-img{
-    height: 300px;
-    width: 550px;
-    /* position: absolute;
-    top: 10%;
-    right: 10%; */
+    width: 600px;
+    position: relative;
+}
+
+.tick-icon{
+  width: 20px;
 }
 .intro-img:hover .intro-img-hover{
         animation: fadeIn 1s ease-in forwards;
@@ -225,19 +229,19 @@ header-action-btn{
 
 
 .intro-sub-img{
-  display: none;
     height: 120px;
     width: 230px;
     background-color: white;
     position: absolute;
     right: 31%;
     top: 33%;
-    border: 1.5px solid transparent;
+    /* border: 1.5px solid transparent;
     border-radius: 10px;
-    border-image: linear-gradient(90deg, #ff00cc, #3333ff) 1;
+    border-image: linear-gradient(90deg, #ff00cc, #3333ff) 1; */
     animation: move-border 3s infinite;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3), 0 4px 15px rgba(0, 0, 255, 0.2);
 }
+
 @keyframes move-border {
   0% {
     border-image-source: linear-gradient(90deg, #ff00cc, #3333ff);
@@ -254,12 +258,6 @@ header-action-btn{
   border: 3px dashed rgba(255, 255, 255, 0.7);;
   background-color: #A35EFA;
   padding: 3px;
-}
-
-.intro-section h3{
-    position: absolute;
-    left: 10%;
-    top: 5%;
 }
 
 .intro-img-hover{
@@ -296,7 +294,7 @@ left: 40%;
 .pdf-tools {
     width: 80%;
     height: auto;
-    margin: 0 auto; /* Center the section */
+    margin: 10px auto; /* Center the section */
     border: 1px solid #ccc; /* Add a border */
     border-radius: 10px; /* Round the corners */
     padding: 35px; /* Add padding inside the section */
