@@ -177,15 +177,23 @@ header-action-btn{
 
 /* intro section */
 .intro-section{
-    position: relative;
-    height: 180vh;
+    /* position: relative; */
+    /* padding: 40px; */
+    /* height: 180vh; */
     background: linear-gradient(to right, white, #dbe9fb);
 }
 
+.intro-grid-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  place-items: center;
+}
+
 .intro-desc{
-    position: absolute;
+    /* position: absolute;
     left: 10%;
-    top: 10%;
+    top: 10%; */
 }
 
 .intro-section .intro-desc h1{
@@ -195,9 +203,9 @@ header-action-btn{
 .intro-img{
     height: 300px;
     width: 550px;
-    position: absolute;
+    /* position: absolute;
     top: 10%;
-    right: 10%;
+    right: 10%; */
 }
 .intro-img:hover .intro-img-hover{
         animation: fadeIn 1s ease-in forwards;
@@ -217,6 +225,7 @@ header-action-btn{
 
 
 .intro-sub-img{
+  display: none;
     height: 120px;
     width: 230px;
     background-color: white;
@@ -224,7 +233,6 @@ header-action-btn{
     right: 31%;
     top: 33%;
     border: 1.5px solid transparent;
-    box-shadow: ;
     border-radius: 10px;
     border-image: linear-gradient(90deg, #ff00cc, #3333ff) 1;
     animation: move-border 3s infinite;
@@ -292,9 +300,7 @@ left: 40%;
     border: 1px solid #ccc; /* Add a border */
     border-radius: 10px; /* Round the corners */
     padding: 35px; /* Add padding inside the section */
-    position: absolute;
-    left: 10%;
-    bottom: 2%;
+  grid-column: span 2;
     background-color: white;
   }
   
