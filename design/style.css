@@ -40,6 +40,10 @@ img{
     align-items: center;
 }
 
+.grid{
+  display: grid;
+  place-items: center;
+}
 .btn-primary{
     padding: 7px 13px;
     margin: 5px;
@@ -232,15 +236,32 @@ header-action-btn{
     height: 120px;
     width: 230px;
     background-color: white;
+    display: grid;
+    place-items: center;
     position: absolute;
     right: 31%;
     top: 33%;
-    /* border: 1.5px solid transparent;
+    border-radius: 8px;
+    border: 1.5px solid transparent;
     border-radius: 10px;
-    border-image: linear-gradient(90deg, #ff00cc, #3333ff) 1; */
+    border-image: linear-gradient(90deg, #ff00cc, #3333ff) 1;
     animation: move-border 3s infinite;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3), 0 4px 15px rgba(0, 0, 255, 0.2);
 }
+
+.intro-sub-img p{
+  font-size: small;
+  margin: 6px;
+}
+/* .intro-img-hover::after{
+  content: '';
+  position: absolute;
+  right: 31%;
+  top: 33%;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #5A42FD, #F572E4);
+  z-index: -1;
+} */
 
 @keyframes move-border {
   0% {
@@ -252,6 +273,13 @@ header-action-btn{
   100% {
     border-image-source: linear-gradient(90deg, #ff00cc, #3333ff);
   }
+}
+
+.btn-special{
+  place-self: center;
+  width: 65%;
+  height: 6vh;
+  margin: auto auto;
 }
 
 .triggerUpload{
