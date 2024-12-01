@@ -6,6 +6,8 @@ function bindEvents(){
     handleCarousel();
     triggerUpload();
     handleLogin();
+    handleSearch();
+    handleHeader();
 }
 
 function handleCarousel(){
@@ -97,4 +99,42 @@ document.querySelector('#login-atn').addEventListener('click',()=> performLoginA
     //    }
 }
 
-// event.preventDefault();
+function handleSearch(){
+    const sinp = document.querySelector('.search-input');
+    const sicon = document.querySelector('.search-icon');
+    const navitem = document.querySelector('.nav-item');
+    const siconinp = document.querySelector('.search-icon-input');
+    
+    document.querySelector('.search-icon').addEventListener('click',function(){
+        sinp.addEventListener('change',()=>{
+            siconinp.style.display = 'none';
+        })
+        sinp.style.display = 'block';
+        sicon.style.display = 'none';
+        navitem.style.display = 'none';
+        siconinp.style.display = 'block';
+        sinp.addEventListener('change',()=>{
+            siconinp.style.display = 'none';
+        })
+
+        document.querySelector('header').addEventListener('mouseleave',function(){
+            sinp.style.display = 'none';
+            sicon.style.display = 'block';
+            navitem.style.display = 'block';
+            siconinp.style.display = 'none';
+        })
+    })
+}
+function handleHeader() {
+    const arrows = document.querySelectorAll('.arrow');
+    arrows.forEach(arrow => {
+      arrow.addEventListener('click', function () {
+        this.classList.toggle('rotate-up');
+        const dropdown = this.closest('.nav-item').querySelector('.nav-dropdown');
+
+        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    
+      });
+    });
+  }
+  
