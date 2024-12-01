@@ -86,6 +86,7 @@ img{
 /* component classes */
 header{
     padding: 15px;
+    max-height: 10.5vh;
     border-bottom: 1px solid black;
 }
 
@@ -98,6 +99,9 @@ input{
 
 /* custom classes */
 
+.lower-background{
+  background: linear-gradient(to bottom, #DBE9FB ,  #eef4fa , white);
+}
 .container {
     min-height: 100vh; /* Ensure the container takes up at least the full viewport height */
     display: flex;
@@ -147,6 +151,7 @@ input{
 
 /* header */
 .nav-container{
+  height: 100%;
     position: relative;
 }
 
@@ -176,6 +181,11 @@ header ul li{
   margin: 2px;
   transition: transform 0.3s ease; 
   cursor: pointer;
+}
+
+.header-container{
+  height: 100%;
+  width: 100%;
 }
 
 .rotate-up {
@@ -450,8 +460,8 @@ height: 100%;
 /* features section */
 .pdf-tools {
     width: 80%;
-    height: auto;
-    margin: 10px auto; /* Center the section */
+    min-height: 85vh;
+    margin: 20px auto; /* Center the section */
     border: 1px solid #ccc; /* Add a border */
     border-radius: 10px; /* Round the corners */
     padding: 35px; /* Add padding inside the section */
@@ -473,7 +483,7 @@ height: 100%;
     padding: 20px;
     text-align: center;
     width: 200px;
-    
+    height: 200px;
   }
   .tool:hover{
     border: 1.5px solid #3333ff; 
@@ -537,8 +547,9 @@ height: 100%;
   
   .tools-grid {
     display: grid;
+    padding: 20px 10px;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 20px;
+    gap: 10px;
     justify-items: center;
   }
   
@@ -547,17 +558,18 @@ height: 100%;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 20px;
     text-align: center;
-    width: 200px;
+    width: 150px;
+  }
+
+  .tool-carousel-atn:hover{
+    border-bottom:1px solid #0073e6;
   }
   
   .tool-carousel-atn img {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     margin-bottom: 10px;
   }
   
@@ -835,6 +847,25 @@ height: 100%;
     .feature-card {
       flex: 1 1 100%;
     }
+  }
+
+  .moving-arrow{
+    margin: 0 8px;
+  }
+
+  .gallery-btn:hover .moving-arrow{
+    animation: move 0.8s infinite ease-out;
+  }
+
+ @keyframes move {
+  0%{
+    transform: translateX(0px);
+  }100%{
+    transform: translateX(10px);
+  }
+ }
+  .gallery-btn{
+    font-size: large;
   }
 
   .galley {

@@ -120,7 +120,7 @@ function handleSearch(){
         document.querySelector('header').addEventListener('mouseleave',function(){
             sinp.style.display = 'none';
             sicon.style.display = 'block';
-            navitem.style.display = 'block';
+            navitem.style.display = 'flex';
             siconinp.style.display = 'none';
         })
     })
