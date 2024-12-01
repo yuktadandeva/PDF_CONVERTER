@@ -8,6 +8,7 @@ function bindEvents(){
     handleLogin();
     handleSearch();
     handleHeader();
+    handleExpansion();
 }
 
 function handleCarousel(){
@@ -137,4 +138,5 @@ function handleHeader() {
       });
     });
   }
+  
   

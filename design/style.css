@@ -787,6 +787,7 @@ height: 100%;
   /* features card */
 
   .features-section-container{
+    margin: 50px 0;
     display: grid;
     place-items: center;
   }
@@ -895,7 +896,7 @@ height: 100%;
     display: grid;
     padding: auto;
     /* margin: 0 2rem; */
-    width: 75%;
+    width: 74%;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     gap: 14px;
@@ -942,6 +943,66 @@ background-color: rgba(255, 255, 255, 0.603);
   .template-img:hover .overshadow{
    opacity: 1;
   }
+
+  .special{
+    height: 115vh;
+    margin: 100px 50px;
+  }
+
+  .special h1{
+    text-align: center;
+    font-size: xx-large;
+  }
+
+  .special-cnt1-item{
+    border-radius: 20px;
+    width: 100%;
+    height: 250px;
+    background-color: #dae8ff;
+    padding: 20px;
+  }
+  .special-container-1{
+    margin: 30px 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 30px;
+  }
+
+  .special-container-2{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+
+  .special-cnt1-item:hover,.special-cnt2-item:hover{
+    box-shadow: 0px 10px 10px 0px #c2d5f66c;
+    transform: translateY(-20px);
+    transition: all 0.5s ease-out;
+
+  }
+
+  .special-cnt2-item{
+    padding: 20px;
+    border-radius: 20px;
+    width: 100%;
+    height: 150px;
+    background-color: #F4F5FF;
+  }
+
+  .cnt1-item-1{
+    grid-column: span 2;
+  }
+  .cnt1-item-4{
+    grid-column: span 2;
+  }
+
+  .expand h1{
+    font-size: xx-large;
+    margin: 30px;
+  }
   
   .carousel-expand {
     display: flex;
@@ -953,23 +1014,59 @@ background-color: rgba(255, 255, 255, 0.603);
 
 
   
-  .carousel-expand .carousel-item {
+  /* .carousel-expand .carousel-item {
     flex: 0.5;
     text-align: center;
     padding: 20px;
     border-radius: 10px;
     transition: all 0.3s ease-in-out;
     /* background: linear-gradient(135deg, #a1c4fd, #c2e9fb); */
-    border: 1px solid pink;
-    /* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); */
+    /* border: 1px solid pink;     background: linear-gradient(to bottom, #e9cefb, #b3d4f7, #b7c8f9);
+    height: 400px;
+     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); 
   }
   
-  .carousel-expand .carousel-item:hover {
+  .carousel-expand h3{
+      font-size: 1.3rem; /* Adjust as needed 
+      font-weight: bold;
+      background: linear-gradient(90deg, #b39dfc, #043eeb); Purple to blue gradient 
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;  Optional: centers the text 
+  } */
+
+  /* .carousel-expand .carousel-item:hover {
     flex: 5;
     background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    /* transform: scale(1.1); */
+    /* transform: scale(1.1); 
+  } */
+
+  .carousel-expand .carousel-item {
+    flex: 0.5;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+    background: linear-gradient(to bottom, #e9cefb, #b3d4f7, #b7c8f9);
+    height: 400px;
   }
+  
+  .carousel-expand .carousel-item.expanded {
+    flex: 5;
+    background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  }
+  
+  .carousel-expand h3 {
+    font-size: 1.3rem;
+    font-weight: bold;
+    background: linear-gradient(90deg, #b39dfc, #043eeb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+  }
+  
 
   .hero-section {
     position: relative;
