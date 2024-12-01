@@ -139,4 +139,16 @@ function handleHeader() {
     });
   }
   
-  
+  function handleExpansion(){
+    const items = document.querySelectorAll('.carousel-item');
+
+items.forEach(item => {
+  item.addEventListener('mouseover', () => {
+    items.forEach(i => i.classList.remove('expanded')); 
+    item.classList.add('expanded'); 
+  });
+});
+
+document.querySelector('.carousel-item').classList.add('expanded');
+
+  }
