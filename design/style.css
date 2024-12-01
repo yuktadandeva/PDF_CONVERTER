@@ -868,51 +868,7 @@ height: 100%;
     font-size: large;
   }
 
-  .galley {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-  
-  }
-  
-  .grid-item {
- 
-    background:white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
 
-  .template-img{
-    position: relative;
-    width: 200px;
-  }
-
-  .template-img img:hover{
-opacity: 1;
-  }
-
-  .overshadow{
-    opacity: 0;
-    border-radius: 8px;
-    top: 0;
-    position: absolute;
-    background-color: #ccccccb5;
-    height: 100%;
-    width: 100%;
-  }
-  
-  .grid-item h3 {
-    margin-bottom: 0.5rem;
-    font-size: 1.5rem;
-    color: #333;
-  }
-  
-  .grid-item p {
-    color: #666;
-    font-size: 1rem;
-  }
   
   .carousel-expand {
     display: flex;
