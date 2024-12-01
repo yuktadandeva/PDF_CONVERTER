@@ -774,6 +774,13 @@ height: 100%;
   
   /* features card */
 
+  .features-section-container{
+    display: grid;
+    place-items: center;
+  }
+  .features-section-heading{
+    width: 74%;
+  }
   .features-section {
     display: flex;
     flex-wrap: wrap;
@@ -781,26 +788,40 @@ height: 100%;
     justify-content: center;
     padding: 2rem;
   }
+  .gallery-section-heading{
+    width: 74%;
+    margin: auto;
+    margin-top: 100px;
+  }
+
+  .features-section-heading h1{
+ font-size: 2rem;
+  }
+
+  .gallery-section-heading p{
+    margin: 10px 0;
+  }
+
+  .gallery-section-heading h1{
+ font-size: 2rem;
+  }
   
   .feature-card {
+    display: grid;
+    place-items: center;
     background-color: #fff;
     border-radius: 8px;
     padding: 1.5rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3), 0 4px 15px rgba(0, 0, 255, 0.2);
     text-align: center;
     flex: 1 1 calc(33.333% - 1rem);
     max-width: 300px;
   }
-  
-  .feature-card h3 {
-    font-size: 1.25rem;
-    margin-bottom: 0.5rem;
-    color: #0073e6;
-  }
-  
+
   .feature-card p {
-    font-size: 1rem;
-    color: #555;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: black;
   }
   
   /* Responsive Design */
@@ -820,15 +841,35 @@ height: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
-    padding: 2rem;
+  
   }
   
   .grid-item {
-    background: #f8f8f8;
+ 
+    background:white;
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
+  }
+
+  .template-img{
+    position: relative;
+    width: 200px;
+  }
+
+  .template-img img:hover{
+opacity: 1;
+  }
+
+  .overshadow{
+    opacity: 0;
+    border-radius: 8px;
+    top: 0;
+    position: absolute;
+    background-color: #ccccccb5;
+    height: 100%;
+    width: 100%;
   }
   
   .grid-item h3 {
@@ -876,7 +917,6 @@ height: 100%;
     background-image: url('background-image.jpg'); /* Replace with your image */
     background-size: cover;
     background-position: center;
-    color: #fff;
   }
   
   .hero-content {
@@ -898,13 +938,16 @@ height: 100%;
   }
   
   .hero-content button {
-    padding: 15px 30px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    margin: 0 10px;
+    font-size: larger;
+  }
+
+  .scale-img{
+    width: 80%;
+    overflow: hidden;
+  }
+
+  .scale-img img:hover{
+    transform: scale(1.1);
+    transition: all 0.3s ease-out;
   }
   
