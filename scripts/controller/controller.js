@@ -36,14 +36,11 @@ function triggerUpload(){
     const fileInput = document.querySelector('.inputToBeTriggered');
    
     uploadButton.addEventListener('click', function(){
-        console.log("click")
         document.querySelector('.inputToBeTriggered').click();
     })
 
     fileInput.addEventListener('change', function(){
-       
 
-       
         if (fileInput.files.length > 0 ) {
             const file = fileInput.files[0];
             const reader = new FileReader();
