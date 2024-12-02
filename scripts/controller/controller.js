@@ -1,4 +1,5 @@
 // handling the features-carousel
+import { handleDesktopFileInput } from "./desktopController";
 window.addEventListener('DOMContentLoaded',bindEvents);
 
 let isLoggedIn = false;
@@ -9,14 +10,10 @@ function bindEvents(){
     handleSearch();
     handleHeader();
     handleExpansion();
-    handleDesktopFileInput();
+    
 }
 
-function handleDesktopFileInput(){
-    document.querySelector('.file-input-icon').addEventListener('click', ()=>{
-        document.querySelector('#file-input-desktop').click();
-    })
-}
+
 
 function handleCarousel(){
     // adding event listener
@@ -43,7 +40,7 @@ function triggerUpload(){
     })
 
     fileInput.addEventListener('change', function(){
-        displayInputFile(fileInput.files[0])
+        // handleDesktopFileInput(fileInput.files[0]);
         if(isLoggedIn){
         if (fileInput.files.length > 0 ) {
             window.location.href = '/PDF_CONVERTER/desktop.html'; 
@@ -54,9 +51,6 @@ function triggerUpload(){
     
 }
 
-function displayInputFile(file){
-    document.querySelector('')
-}
 
 function handleLogin() {
     const loginButton = document.querySelector('.login-popUp');
