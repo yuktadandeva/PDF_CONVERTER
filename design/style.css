@@ -228,6 +228,7 @@ header ul li{
 }
 
 .nav-dropdown{
+  width: 150px;
   display: none;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3), 0 4px 15px rgba(0, 0, 255, 0.2);
   padding: 15px;
@@ -237,6 +238,22 @@ header ul li{
   background-color: white;
 }
 
+.nav-dropdown button{
+  width: 100%;
+  background-color: white;
+  border: none;
+}
+
+.nav-dropdown li:hover{
+  background-color: #94a0fc;
+}
+
+.dropdown-2{
+  width: 200%;
+}
+.nav-dropdown ul{
+display: inline-block;
+}
 .arrow{
   margin: 2px;
   transition: transform 0.3s ease; 
@@ -1000,6 +1017,13 @@ background-color: rgba(255, 255, 255, 0.603);
 
   }
 
+  
+  .cnt1-item-3,
+  .cnt1-item-4{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
  
   .cnt1-item-1{
     background: linear-gradient(-45deg, #ffffff, #ccd5f7, #ffffff);
@@ -1240,11 +1264,19 @@ background-color: rgba(255, 255, 255, 0.603);
     height: auto;
   }
 
+  .conveyor-item{
+    width: 50px;
+   
+  }
+
+
   .template-img{
     width: 160px;
   }
 
-  
+  .special-container-2 div{
+    margin-bottom: 10px;
+  }
 
   .special-cnt1-item{
     border-radius: 20px;
@@ -1260,7 +1292,10 @@ background-color: rgba(255, 255, 255, 0.603);
     height: 150px;
   }
 
-  
+  .cnt1-item-2,.cnt1-item-3,.cnt1-item-4{
+  display: grid;
+  place-items: center;
+  }
 
   .gallery-section-heading{
     font-size: smaller;
@@ -1271,7 +1306,7 @@ background-color: rgba(255, 255, 255, 0.603);
   }
 
   .special{
-    margin: 10px;
+    margin: 100px 0;
   }
 
   .special-container-1{
@@ -1298,6 +1333,22 @@ background-color: rgba(255, 255, 255, 0.603);
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%); */
+  }
+
+  .expand h1{
+    text-align: center;
+  }
+
+  .carousel-expand{
+    flex-direction: column;
+  }
+
+  .pdf-tools-action-btn{
+    font-size: smaller;
+  }
+
+  .pdf-tools-title h2, .pdf-tools-title p{
+   margin-left: 5px;
   }
 
   .carousel-item-desc{
@@ -1354,7 +1405,7 @@ background-color: rgba(255, 255, 255, 0.603);
    padding: 30px;
   }
 
-  .btn-primary,.btn-secondary,.nav-container{
+  .free-trial,.login-popUp,.nav-container{
       display: none;
   }
 
@@ -1444,6 +1495,7 @@ background-color: rgba(255, 255, 255, 0.603);
 
   .pdf-tools-title{
     display: block;
+  
   }
  
   .gallery-btn{
