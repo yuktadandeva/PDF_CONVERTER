@@ -1,95 +1,68 @@
 window.addEventListener('DOMContentLoaded',bindEvents);
 
 function bindEvents(){
-    handleDesktopFileInput();
+    loadPDF();
 }
 
-function handleDesktopFileInput(){
 
-    const { pdfjsLib } = window;
-  
-    pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.9.124/+esm";
-  
-    let pdfDoc = null,
-        pageNum = 1,
-        pageRendering = false,
-        pageNumPending = null,
-        scale = 0.8,
-        canvas = document.getElementById('the-canvas'),
-        ctx = canvas.getContext('2d');
-  
-    // Retrieve and decode PDF from local storage
-    const storedPDF = localStorage.getItem('uploadedFile');
-    if (!storedPDF) {
-      console.error('No PDF found in local storage!');
-      return;
-    }
-    const base64PDF = storedPDF.split(',')[1];
-    const binaryString = atob(base64PDF);
-    const uint8Array = new Uint8Array(binaryString.length);
-    for (let i = 0; i < binaryString.length; i++) {
-      uint8Array[i] = binaryString.charCodeAt(i);
-    }
-  
-    // Render a page
-    function renderPage(num) {
-      pageRendering = true;
-      pdfDoc.getPage(num).then(function (page) {
+
+function renderPage(pdf, pageNumber) {
+    pdf.getPage(pageNumber).then(function(page) {
+        const scale = 1.5;  // Adjust the zoom level
         const viewport = page.getViewport({ scale: scale });
-        canvas.height = viewport.height;
+
+        // Create a canvas element to render the PDF page
+        const canvas = document.createElement("canvas");
+        const context = canvas.getContext("2d");
+
+        // Set canvas size
         canvas.width = viewport.width;
-  
-        const renderContext = {
-          canvasContext: ctx,
-          viewport: viewport,
-        };
-        const renderTask = page.render(renderContext);
-  
-        renderTask.promise.then(function () {
-          pageRendering = false;
-          if (pageNumPending !== null) {
-            renderPage(pageNumPending);
-            pageNumPending = null;
-          }
+        canvas.height = viewport.height;
+
+        // Render the page into the canvas
+        page.render({
+            canvasContext: context,
+            viewport: viewport
         });
-      });
-  
-      document.getElementById('page_num').textContent = num;
-    }
-  
-    // Queue page rendering
-    function queueRenderPage(num) {
-      if (pageRendering) {
-        pageNumPending = num;
-      } else {
-        renderPage(num);
-      }
-    }
-  
-    // Previous page
-    document.getElementById('prev').addEventListener('click', function () {
-      if (pageNum <= 1) {
-        return;
-      }
-      pageNum--;
-      queueRenderPage(pageNum);
+
+        // Append the canvas to the pdfContainer
+        document.getElementById('pdfContainer').appendChild(canvas);
     });
-  
-    // Next page
-    document.getElementById('next').addEventListener('click', function () {
-      if (pageNum >= pdfDoc.numPages) {
-        return;
-      }
-      pageNum++;
-      queueRenderPage(pageNum);
-    });
-  
-    // Load the PDF
-    pdfjsLib.getDocument({ data: uint8Array }).promise.then(function (pdfDoc_) {
-      pdfDoc = pdfDoc_;
-      document.getElementById('page_count').textContent = pdfDoc.numPages;
-      renderPage(pageNum);
-    });
-  };
+}
+
+// Function to load the PDF file and render the pages
+
+
+// Event listener for file input to upload a PDF
+// document.getElementById('fileInput').addEventListener('change', function(event) {
+//     const file = event.target.files[0];
+//     if (file && file.type === 'application/pdf') {
+//         document.getElementById('pdfContainer').innerHTML = '';  // Clear previous content
+//         loadPDF(file);  // Load and display the PDF
+//     } else {
+//         alert('Please upload a valid PDF file.');
+//     }
+// });
+
+function loadPDF(file) {
+    const reader = new FileReader();
+    reader.onload = function(event) {
+        const pdfData = new Uint8Array(event.target.result);
+
+        // Load the PDF using PDF.js
+        pdfjsLib.getDocument({ data: pdfData }).promise.then(function(pdf) {
+            const totalPages = pdf.numPages;
+
+            // Render each page of the PDF
+            for (let pageNumber = 1; pageNumber <= totalPages; pageNumber++) {
+                renderPage(pdf, pageNumber);
+            }
+        }).catch(function(error) {
+            console.error("Error loading PDF: ", error);
+        });
+    };
+
+    reader.readAsArrayBuffer(file); // Read the PDF file
+}
   
 

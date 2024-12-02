@@ -1,19 +1,50 @@
-// handling the features-carousel
+const globalState = {
+    isLoggedIn: false,
+    setLoginStatus(status) {
+        this.isLoggedIn = status;
+        localStorage.setItem('isLoggedIn', JSON.stringify(status));
+        console.log("Login status updated:", this.isLoggedIn);
+    },
+    getLoginStatus() {
+        const storedStatus = localStorage.getItem('isLoggedIn');
+        this.isLoggedIn = storedStatus ? JSON.parse(storedStatus) : false;
+        return this.isLoggedIn;
+    }
+};
+
+// Usage:
+globalState.setLoginStatus(true);
+console.log(globalState.getLoginStatus()); // true
+
 window.addEventListener('DOMContentLoaded',bindEvents);
-
-let isLoggedIn = false;
-
-function bindEvents(){
-    handleCarousel();
-    triggerUpload();
-    handleLogin();
-    handleSearch();
-    handleHeader();
-    handleExpansion();
+// async
+function performLoginAuthentication(redirectAfterLogin){
+    let email = document.querySelector('.email-address').value ;
+    let pswd = document.querySelector('.password').value;
     
+    let user = {email,pswd};
+    console.log("login info", user);
+
+    if(redirectAfterLogin){
+  
+            window.location.href ='/PDF_CONVERTER/desktop.html'; 
+    
+    }
+    return isLoggedIn = true;;
+    // try{
+    //     const response = await axios.post(url,{
+    //       user
+    //     })
+    //     if(response.status == 200){
+    //         isLoggedIn = true;
+    //     }else{
+    //         alert("wrong credentials");
+    //     }
+         
+    //    }catch(err){
+    //     alert("error in login ", err)
+    //    }
 }
-
-
 
 function handleCarousel(){
     // adding event listener
@@ -41,6 +72,7 @@ function triggerUpload(){
 
     fileInput.addEventListener('change', function(){
 
+        if(globalState.isLoggedIn){
         if (fileInput.files.length > 0 ) {
             const file = fileInput.files[0];
             const reader = new FileReader();
@@ -53,9 +85,9 @@ function triggerUpload(){
             reader.readAsDataURL(file); 
             window.location.href = '/PDF_CONVERTER/desktop.html'; 
         }
-        // else{
-        //     loginPopUp(true);  
-        // }
+    }else{
+            loginPopUp(true);  
+        }
     });
     
 }
@@ -88,35 +120,7 @@ document.querySelector('.closeLoginPopUp').addEventListener('click', function(){
 document.querySelector('#login-atn').addEventListener('click',()=> performLoginAuthentication());
 }
 
-// async
- function performLoginAuthentication(redirectAfterLogin){
-    let email = document.querySelector('.email-address').value ;
-    let pswd = document.querySelector('.password').value;
-    
-    let user = {email,pswd};
-    console.log("login info", user);
-    isLoggedIn = true;
 
-    if(redirectAfterLogin){
-  
-            window.location.href ='/PDF_CONVERTER/desktop.html'; 
-    
-    }
-    return;
-    // try{
-    //     const response = await axios.post(url,{
-    //       user
-    //     })
-    //     if(response.status == 200){
-    //         isLoggedIn = true;
-    //     }else{
-    //         alert("wrong credentials");
-    //     }
-         
-    //    }catch(err){
-    //     alert("error in login ", err)
-    //    }
-}
 
 function handleSearch(){
     const sinp = document.querySelector('.search-input');
@@ -170,3 +174,12 @@ items.forEach(item => {
 document.querySelector('.carousel-item').classList.add('expanded');
 
   }
+
+  function bindEvents(){
+    handleCarousel();
+    triggerUpload();
+    handleLogin();
+    handleSearch();
+    handleHeader();
+    handleExpansion();
+}

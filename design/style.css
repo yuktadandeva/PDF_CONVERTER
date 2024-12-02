@@ -606,6 +606,8 @@ height: 100%;
     background-color: white;
   }
 
+  
+
   .carousel-item-desc{
     position: absolute;
     text-align: left;
@@ -1253,21 +1255,21 @@ background-color: rgba(255, 255, 255, 0.603);
     grid-template-columns: 1fr 1fr;
   }
 
+  .carousel-item-inner{
+    width: 100%;
+    height: 100%;
+   
+    /* position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%); */
+  }
+
   .carousel-item-desc{
-    position: absolute;
-    top: 10%;
-    left: 14%;
     text-align: center;
   }
-
-  .carousel-item-img{
-    position: absolute;
-    bottom: 0%;
-    left: 10%;
-  }
-
   .features-carousel-section{
-    height: 150vh;
+    min-height: 150vh;
     background-color: #f9f9ff;
     /* text-align: center; */
     padding: 50px 20px;
@@ -1284,11 +1286,11 @@ background-color: rgba(255, 255, 255, 0.603);
   }
 
   .carousel-item-img{
-    width: 300px;
+    
+    max-width: 300px;
   }
 
   .carousel-item{
-
     padding: 10px;
     position: relative;
     width: 80%;
