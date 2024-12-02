@@ -9,6 +9,13 @@ function bindEvents(){
     handleSearch();
     handleHeader();
     handleExpansion();
+    handleDesktopFileInput();
+}
+
+function handleDesktopFileInput(){
+    document.querySelector('.file-input-icon').addEventListener('click', ()=>{
+        document.querySelector('#file-input-desktop').click();
+    })
 }
 
 function handleCarousel(){
@@ -30,11 +37,13 @@ function handleCarousel(){
 function triggerUpload(){
     const uploadButton = document.querySelector('.triggerUpload');
     const fileInput = document.querySelector('.inputToBeTriggered');
+   
     uploadButton.addEventListener('click', function(){
         document.querySelector('.inputToBeTriggered').click();
     })
 
     fileInput.addEventListener('change', function(){
+        displayInputFile(fileInput.files[0])
         if(isLoggedIn){
         if (fileInput.files.length > 0 ) {
             window.location.href = '/PDF_CONVERTER/desktop.html'; 
@@ -43,6 +52,10 @@ function triggerUpload(){
         }
     });
     
+}
+
+function displayInputFile(file){
+    document.querySelector('')
 }
 
 function handleLogin() {
@@ -60,11 +73,13 @@ function handleLogin() {
 
 function loginPopUp(redirectAfterLogin = false){
 
+    document.body.style.overflow = 'hidden'; 
 document.querySelector('.login-section').style.display = "block";
 console.log(redirectAfterLogin+"inside loginpopup");
 
 document.querySelector('.closeLoginPopUp').addEventListener('click', function(){
     document.querySelector('.login-section').style.display = 'none';
+    document.body.style.overflow = 'auto'; 
 })
 
 document.querySelector('#login-atn').addEventListener('click',()=> performLoginAuthentication());
