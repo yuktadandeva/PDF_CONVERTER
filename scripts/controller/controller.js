@@ -12,25 +12,20 @@ const globalState = {
     }
 };
 
-// Usage:
-globalState.setLoginStatus(true);
-console.log(globalState.getLoginStatus()); // true
-
-window.addEventListener('DOMContentLoaded',bindEvents);
+window.addEventListener('DOMContentLoaded',()=>{
+   
+    bindEvents()});
 // async
-function performLoginAuthentication(redirectAfterLogin){
+function performLoginAuthentication(){
     let email = document.querySelector('.email-address').value ;
     let pswd = document.querySelector('.password').value;
     
     let user = {email,pswd};
     console.log("login info", user);
 
-    if(redirectAfterLogin){
-  
-            window.location.href ='/PDF_CONVERTER/desktop.html'; 
+    globalState.setLoginStatus(true);
     
-    }
-    return isLoggedIn = true;;
+    
     // try{
     //     const response = await axios.post(url,{
     //       user
@@ -77,8 +72,8 @@ function triggerUpload(){
             const file = fileInput.files[0];
             const reader = new FileReader();
             reader.onloadend = function () {
-                const fileBase64 = reader.result;  
-                localStorage.setItem('uploadedFile', fileBase64);
+                const base64PDF = reader.result;  
+                localStorage.setItem('uploadedFile', base64PDF);
                 console.log('File saved in local storage');
             };
             
@@ -86,7 +81,10 @@ function triggerUpload(){
             window.location.href = '/PDF_CONVERTER/desktop.html'; 
         }
     }else{
-            loginPopUp(true);  
+            loginPopUp(); 
+            if(globalState.isLoggedIn){
+                window.location.href = '/PDF_CONVERTER/desktop.html'; 
+            }
         }
     });
     
@@ -99,6 +97,9 @@ function handleLogin() {
         loginButton.addEventListener('click', (event) => {
             event.preventDefault(); 
             loginPopUp();
+            if(globalState.isLoggedIn){
+                // loginButton.innerText = "Log Out";
+            }
         });
     } else {
         console.error("Login button (#login-atn) not found in the DOM.");
@@ -106,11 +107,10 @@ function handleLogin() {
 }
 
 
-function loginPopUp(redirectAfterLogin = false){
+function loginPopUp(){
 
     document.body.style.overflow = 'hidden'; 
 document.querySelector('.login-section').style.display = "block";
-console.log(redirectAfterLogin+"inside loginpopup");
 
 document.querySelector('.closeLoginPopUp').addEventListener('click', function(){
     document.querySelector('.login-section').style.display = 'none';
