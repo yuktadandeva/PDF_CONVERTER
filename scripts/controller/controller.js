@@ -1,8 +1,8 @@
 // handling the features-carousel
-import { handleDesktopFileInput } from "./desktopController";
 window.addEventListener('DOMContentLoaded',bindEvents);
 
 let isLoggedIn = false;
+
 function bindEvents(){
     handleCarousel();
     triggerUpload();
@@ -36,17 +36,29 @@ function triggerUpload(){
     const fileInput = document.querySelector('.inputToBeTriggered');
    
     uploadButton.addEventListener('click', function(){
+        console.log("click")
         document.querySelector('.inputToBeTriggered').click();
     })
 
     fileInput.addEventListener('change', function(){
-        // handleDesktopFileInput(fileInput.files[0]);
-        if(isLoggedIn){
+       
+
+       
         if (fileInput.files.length > 0 ) {
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+            reader.onloadend = function () {
+                const fileBase64 = reader.result;  
+                localStorage.setItem('uploadedFile', fileBase64);
+                console.log('File saved in local storage');
+            };
+            
+            reader.readAsDataURL(file); 
             window.location.href = '/PDF_CONVERTER/desktop.html'; 
-        }}else{
-            loginPopUp(true);  
         }
+        // else{
+        //     loginPopUp(true);  
+        // }
     });
     
 }
