@@ -3,19 +3,20 @@ window.addEventListener('DOMContentLoaded',bindEvents);
 function bindEvents(){
     retreiveFile();
 }
+
 function retreiveFile(){
     const base64PDF = localStorage.getItem('uploadedFile');
     if (base64PDF) {
-        document.querySelector('.file-container').innerHTML = '';  // Clear previous content
-        renderPDFFromBase64(base64PDF);  // Load and render the PDF from localStorage
+        document.querySelector('.file-container').innerHTML = '';  
+        renderPDFFromBase64(base64PDF);  
     } else {
         alert('No PDF found in localStorage.');
     }
 }
-// Function to render a page of the PDF
+
 function renderPage(pdf, pageNumber) {
     pdf.getPage(pageNumber).then(function(page) {
-        const scale = 1.5;  // Adjust the zoom level
+        const scale = 1.5;  
         const viewport = page.getViewport({ scale: scale });
 
         // Create a canvas element to render the PDF page
