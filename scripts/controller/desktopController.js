@@ -1,26 +1,7 @@
 window.addEventListener('DOMContentLoaded',bindEvents);
 
 function bindEvents(){
-
-    const fileInput = document.querySelector('.fileInput');
-
-    fileInput.addEventListener('change', function(){
-        console.log("file inp", fileInput.files[0])
-        if (fileInput.files.length > 0 ) {
-            const file = fileInput.files[0];
-            const reader = new FileReader();
-            reader.onloadend = function () {
-                const base64PDF = reader.result;  
-                localStorage.setItem('uploadedFile', base64PDF);
-                console.log('File saved in local storage');
-            };
-            
-            reader.readAsDataURL(file);
-             retreiveFile();
-        }});
-
-       
-
+    retreiveFile();
 }
 function retreiveFile(){
     const base64PDF = localStorage.getItem('uploadedFile');
