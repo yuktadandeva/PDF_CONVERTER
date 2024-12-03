@@ -146,18 +146,9 @@ img{
     display: none;
 }
 
-/* .file-container{
-    width: 95%;
-    height: 95%;
-    background-color: #e3e6f8;
-    display: grid;
-    place-items: center;
-    align-items: center;
-    
-} */
 .file-container-outer {
     width: 100%;
-    height: 400px; 
+    height: 600px; 
     overflow: hidden; 
     border: 1px solid pink;
 }

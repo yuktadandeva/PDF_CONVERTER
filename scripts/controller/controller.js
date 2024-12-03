@@ -2,7 +2,7 @@ const globalState = {
     isLoggedIn: false,
     setLoginStatus(status) {
         this.isLoggedIn = status;
-        // localStorage.setItem('isLoggedIn', JSON.stringify(status));
+        localStorage.setItem('isLoggedIn', JSON.stringify(status));
         console.log("Login status updated:", this.isLoggedIn);
     },
     getLoginStatus() {
@@ -12,16 +12,26 @@ const globalState = {
     }
 };
 
-window.addEventListener('DOMContentLoaded',
-    bindEvents);
+window.addEventListener('DOMContentLoaded',bindEvents);
+
+function bindEvents(){
+    localStorage.clear();
+    handleCarousel();
+    triggerUpload();
+    handleLogin();
+    handleSearch();
+    handleHeader();
+    handleExpansion();
+}
+
 // async
 function performLoginAuthentication(){
     return new Promise((resolve, reject)=>{
-    let email = document.querySelector('.email-address').value ;
-    let pswd = document.querySelector('.password').value;
+        let email = document.querySelector('#email-address').value ;
+        let pswd = document.querySelector('#password').value;
     
-    let user = {email,pswd};
-    console.log("login info", user);
+        let user = { email, pswd };
+        console.log("login info", user);
 
     setTimeout(() => {
         if (email && pswd) {
@@ -73,9 +83,12 @@ function triggerUpload(){
         document.querySelector('.inputToBeTriggered').click();
     })
 
-    fileInput.addEventListener('change', function(){
+   
+    fileInput.addEventListener('change',async function(){
         console.log("file inp", fileInput.files[0])
-        if (fileInput.files.length > 0 ) {
+
+        //file stored in local storage
+        if ( fileInput.files.length > 0 ) {
             const file = fileInput.files[0];
             const reader = new FileReader();
             reader.onloadend = function () {
@@ -87,16 +100,29 @@ function triggerUpload(){
             reader.readAsDataURL(file);
         }
 
-        if(globalState.isLoggedIn){
+        if(globalState.getLoginStatus()){
                 window.location.href = '/PDF_CONVERTER/desktop.html'; 
         }else{
                 console.log("login pop called by trigger upload");
-                loginPopUp(); 
-                console.log(globalState.isLoggedIn, "updated login status");
-                if(globalState.isLoggedIn){
-                    console.log(globalState.isLoggedIn, "login status inside redirecting block");
-                    window.location.href = '/PDF_CONVERTER/desktop.html'; 
+                try{
+
+                    await loginPopUp(); 
+                    console.log(globalState.isLoggedIn, "updated login status");
+    
+                    if(globalState.isLoggedIn){
+                        console.log(globalState.isLoggedIn, "login status inside redirecting block");
+                        window.location.href = '/PDF_CONVERTER/desktop.html'; 
+                    }else{
+                        alert("error in logging in");
+                    }
+
+                }catch{
+                    
+                    alert("error in opening pop up")
+
                 }
+               
+
             }
        
     
@@ -105,30 +131,36 @@ function triggerUpload(){
 }
 
 
-async function handleLogin(){
+function handleLogin(){
     const loginButton = document.querySelector('.login-popUp');
+    if(globalState.getLoginStatus()){
+        console.log("change button text");
+        loginButton.innerText = " ";
+        loginButton.innerText = "LOGOUT";
+    }
+
     if (loginButton) {
-        loginButton.addEventListener('click', (event) => {
+        loginButton.addEventListener('click', async (event) => {
             event.preventDefault(); 
             console.log("value of login by button", globalState.isLoggedIn)
-            if(globalState.isLoggedIn){
-                console.log("change button text");
-                loginButton.innerText = "Log Out";
+
+            try {
+                await loginPopUp(); // Wait for login pop-up and authentication
+                console.log(globalState.isLoggedIn, "updated login status");
+
+                if(globalState.isLoggedIn){
+                    console.log("change button text");
+                    loginButton.innerText = " ";
+                    loginButton.innerText = "LOGOUT";
+                }
+              
+            } catch (error) {
+                console.log("Login process canceled or failed:", error);
             }
+
         });
     } else {
         console.error("Login button (#login-atn) not found in the DOM.");
-
-        try {
-            await loginPopUp(); // Wait for login pop-up and authentication
-            console.log(globalState.isLoggedIn, "updated login status");
-            if (globalState.isLoggedIn) {
-                console.log("Redirecting after successful login");
-                window.location.href = '/PDF_CONVERTER/desktop.html';
-            }
-        } catch (error) {
-            console.log("Login process canceled or failed:", error);
-        }
 
     }
 }
@@ -136,6 +168,7 @@ async function handleLogin(){
 
 async function loginPopUp() {
     return new Promise((resolve, reject) => {
+
         document.body.style.overflow = 'hidden';
         document.querySelector('.login-section').style.display = "block";
 
@@ -147,6 +180,7 @@ async function loginPopUp() {
         });
 
         document.querySelector('#login-atn').addEventListener('click', async () => {
+            
             try {
                 const message = await performLoginAuthentication();
                 document.querySelector('.login-section').style.display = 'none';
@@ -159,9 +193,6 @@ async function loginPopUp() {
         });
     });
 }
-
-
-
 
 function handleSearch(){
     const sinp = document.querySelector('.search-input');
@@ -189,7 +220,8 @@ function handleSearch(){
         })
     })
 }
-function handleHeader() {
+
+function handleHeader(){
     const arrows = document.querySelectorAll('.arrow');
     arrows.forEach(arrow => {
       arrow.addEventListener('click', function () {
@@ -200,9 +232,9 @@ function handleHeader() {
     
       });
     });
-  }
+}
   
-  function handleExpansion(){
+function handleExpansion(){
     const items = document.querySelectorAll('.carousel-item');
 
 items.forEach(item => {
@@ -214,13 +246,5 @@ items.forEach(item => {
 
 document.querySelector('.carousel-item').classList.add('expanded');
 
-  }
-
-  function bindEvents(){
-    handleCarousel();
-    triggerUpload();
-    handleLogin();
-    handleSearch();
-    handleHeader();
-    handleExpansion();
 }
+
