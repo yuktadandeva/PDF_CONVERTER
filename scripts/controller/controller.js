@@ -66,7 +66,7 @@ function triggerUpload(){
     })
 
     fileInput.addEventListener('change', function(){
-
+        console.log("file inp", fileInput.files[0])
         if(globalState.isLoggedIn){
         if (fileInput.files.length > 0 ) {
             const file = fileInput.files[0];
