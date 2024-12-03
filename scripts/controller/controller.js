@@ -2,7 +2,7 @@ const globalState = {
     isLoggedIn: false,
     setLoginStatus(status) {
         this.isLoggedIn = status;
-        localStorage.setItem('isLoggedIn', JSON.stringify(status));
+        // localStorage.setItem('isLoggedIn', JSON.stringify(status));
         console.log("Login status updated:", this.isLoggedIn);
     },
     getLoginStatus() {
@@ -12,19 +12,27 @@ const globalState = {
     }
 };
 
-window.addEventListener('DOMContentLoaded',()=>{
-   
-    bindEvents()});
+window.addEventListener('DOMContentLoaded',
+    bindEvents);
 // async
 function performLoginAuthentication(){
+    return new Promise((resolve, reject)=>{
     let email = document.querySelector('.email-address').value ;
     let pswd = document.querySelector('.password').value;
     
     let user = {email,pswd};
     console.log("login info", user);
 
-    globalState.setLoginStatus(true);
-    
+    setTimeout(() => {
+        if (email && pswd) {
+            globalState.setLoginStatus(true);
+            return resolve("Login successful");
+        } else {
+            globalState.setLoginStatus(false);
+           return reject("Invalid credentials");
+        }
+    }, 1000);
+    });
     
     // try{
     //     const response = await axios.post(url,{
@@ -67,7 +75,6 @@ function triggerUpload(){
 
     fileInput.addEventListener('change', function(){
         console.log("file inp", fileInput.files[0])
-        if(globalState.isLoggedIn){
         if (fileInput.files.length > 0 ) {
             const file = fileInput.files[0];
             const reader = new FileReader();
@@ -77,48 +84,82 @@ function triggerUpload(){
                 console.log('File saved in local storage');
             };
             
-            reader.readAsDataURL(file); 
-            window.location.href = '/PDF_CONVERTER/desktop.html'; 
+            reader.readAsDataURL(file);
         }
-    }else{
-            loginPopUp(); 
-            if(globalState.isLoggedIn){
+
+        if(globalState.isLoggedIn){
                 window.location.href = '/PDF_CONVERTER/desktop.html'; 
+        }else{
+                console.log("login pop called by trigger upload");
+                loginPopUp(); 
+                console.log(globalState.isLoggedIn, "updated login status");
+                if(globalState.isLoggedIn){
+                    console.log(globalState.isLoggedIn, "login status inside redirecting block");
+                    window.location.href = '/PDF_CONVERTER/desktop.html'; 
+                }
             }
-        }
+       
+    
     });
     
 }
 
 
-function handleLogin() {
+async function handleLogin(){
     const loginButton = document.querySelector('.login-popUp');
     if (loginButton) {
         loginButton.addEventListener('click', (event) => {
             event.preventDefault(); 
-            loginPopUp();
+            console.log("value of login by button", globalState.isLoggedIn)
             if(globalState.isLoggedIn){
-                // loginButton.innerText = "Log Out";
+                console.log("change button text");
+                loginButton.innerText = "Log Out";
             }
         });
     } else {
         console.error("Login button (#login-atn) not found in the DOM.");
+
+        try {
+            await loginPopUp(); // Wait for login pop-up and authentication
+            console.log(globalState.isLoggedIn, "updated login status");
+            if (globalState.isLoggedIn) {
+                console.log("Redirecting after successful login");
+                window.location.href = '/PDF_CONVERTER/desktop.html';
+            }
+        } catch (error) {
+            console.log("Login process canceled or failed:", error);
+        }
+
     }
 }
 
 
-function loginPopUp(){
+async function loginPopUp() {
+    return new Promise((resolve, reject) => {
+        document.body.style.overflow = 'hidden';
+        document.querySelector('.login-section').style.display = "block";
 
-    document.body.style.overflow = 'hidden'; 
-document.querySelector('.login-section').style.display = "block";
+       
+        document.querySelector('.closeLoginPopUp').addEventListener('click', function () {
+            document.querySelector('.login-section').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            reject("Login pop-up closed by user");
+        });
 
-document.querySelector('.closeLoginPopUp').addEventListener('click', function(){
-    document.querySelector('.login-section').style.display = 'none';
-    document.body.style.overflow = 'auto'; 
-})
-
-document.querySelector('#login-atn').addEventListener('click',()=> performLoginAuthentication());
+        document.querySelector('#login-atn').addEventListener('click', async () => {
+            try {
+                const message = await performLoginAuthentication();
+                document.querySelector('.login-section').style.display = 'none';
+                document.body.style.overflow = 'auto';
+                console.log(message);
+                resolve();
+            } catch (error) {
+                alert(error);
+            }
+        });
+    });
 }
+
 
 
 

@@ -1,14 +1,35 @@
 window.addEventListener('DOMContentLoaded',bindEvents);
 
 function bindEvents(){
-        const base64PDF = localStorage.getItem('uploadedFile');
-        if (base64PDF) {
-            document.querySelector('.file-container').innerHTML = '';  // Clear previous content
-            renderPDFFromBase64(base64PDF);  // Load and render the PDF from localStorage
-        } else {
-            alert('No PDF found in localStorage.');
-        }
 
+    const fileInput = document.querySelector('.fileInput');
+
+    fileInput.addEventListener('change', function(){
+        console.log("file inp", fileInput.files[0])
+        if (fileInput.files.length > 0 ) {
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+            reader.onloadend = function () {
+                const base64PDF = reader.result;  
+                localStorage.setItem('uploadedFile', base64PDF);
+                console.log('File saved in local storage');
+            };
+            
+            reader.readAsDataURL(file);
+             retreiveFile();
+        }});
+
+       
+
+}
+function retreiveFile(){
+    const base64PDF = localStorage.getItem('uploadedFile');
+    if (base64PDF) {
+        document.querySelector('.file-container').innerHTML = '';  // Clear previous content
+        renderPDFFromBase64(base64PDF);  // Load and render the PDF from localStorage
+    } else {
+        alert('No PDF found in localStorage.');
+    }
 }
 // Function to render a page of the PDF
 function renderPage(pdf, pageNumber) {
@@ -67,6 +88,8 @@ function arrayBufferToBase64(buffer) {
 
 // Function to render the PDF from a base64 string
 function renderPDFFromBase64(base64PDF) {
+    
+    base64PDF = base64PDF.split(',')[1]; 
     const pdfData = atob(base64PDF);  // Decode base64 string
     const pdfArray = new Uint8Array(pdfData.length);
     for (let i = 0; i < pdfData.length; i++) {
@@ -86,15 +109,3 @@ function renderPDFFromBase64(base64PDF) {
     });
 }
 
-// Event listener for file input to upload a PDF
-// document.getElementById('fileInput').addEventListener('change', function(event) {
-//     const file = event.target.files[0];
-//     if (file && file.type === 'application/pdf') {
-//         document.getElementById('pdfContainer').innerHTML = '';  // Clear previous content
-//         loadPDF(file);  // Load and display the PDF
-//     } else {
-//         alert('Please upload a valid PDF file.');
-//     }
-// });
-
-// Event listener for the "Load PDF from LocalStorage" button
