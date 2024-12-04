@@ -1,10 +1,23 @@
 window.addEventListener('DOMContentLoaded',bindEvents);
 
 function bindEvents(){
-    retreiveFile();
+    retrieveFile();
+    handleUserIcon();
+    handleSideBar();
 }
 
-function retreiveFile(){
+function handleUserIcon(){
+    document.querySelector('.user-icon').addEventListener('click',()=>{
+        const dropdown = document.querySelector('.dropdown');
+        dropdown.style.display = "block";
+        dropdown.addEventListener('mouseleave',()=>{
+            dropdown.style.display = "none";
+        })
+
+    })
+}
+
+function retrieveFile(){
     const base64PDF = localStorage.getItem('uploadedFile');
     if (base64PDF) {
         document.querySelector('.file-container').innerHTML = '';  
@@ -90,4 +103,5 @@ function renderPDFFromBase64(base64PDF) {
         console.error("Error loading PDF: ", error);
     });
 }
+
 
