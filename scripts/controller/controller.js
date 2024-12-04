@@ -128,15 +128,63 @@ function triggerUpload(){
 }
 
 function displayUploadedFile(file){
-    document.querySelector('.intro-img').innerHTML = "";
+   
+        const container = document.querySelector('.pdf-render');
+        container.innerHTML = "";
 
-    const mainDiv = document.createElement('div');
-    mainDiv.style.width = '100%';
-    mainDiv.style.height = '300px';
-    mainDiv.style.overflow = 'hidden';
-
-    const img = document.createElement('img');
-}
+        const pdfContainer = document.createElement('div');
+        pdfContainer.className = 'pdfContainer';
+    
+        if (file.type === "application/pdf") {
+            const reader = new FileReader();
+            reader.onloadend = function () {
+                
+                const pdfData = reader.result;
+    
+                // Initialize PDF.js
+                // const pdfjsLib = window['pdfjs-dist/build/pdf'];
+                // pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://mozilla.github.io/pdf.js/build/pdf.worker.js';
+    
+               
+                pdfjsLib.getDocument({ data: pdfData }).promise.then(async pdf => {
+    
+                    for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+                        const page = await pdf.getPage(pageNum);
+                        console.log(`Rendering page ${pageNum}`);
+    
+                       
+                        const viewport = page.getViewport({ scale: 0.5 }); 
+                        const canvas = document.createElement('canvas');
+                        const context = canvas.getContext('2d');
+                        canvas.width = viewport.width;
+                        canvas.height = viewport.height;
+    
+                        // Render the page into the canvas
+                        await page.render({
+                            canvasContext: context,
+                            viewport: viewport
+                        }).promise;
+    
+                        // Append the canvas to the container
+                        const pageContainer = document.createElement('div');
+                        pageContainer.style.marginBottom = '10px';
+                        pageContainer.appendChild(canvas);
+                        pdfContainer.appendChild(pageContainer)
+                        container.appendChild(pdfContainer);
+                    }
+                }).catch(err => {
+                    console.error("Error loading the PDF:", err);
+                });
+            };
+    
+            // Read the file as an ArrayBuffer
+            reader.readAsArrayBuffer(file);
+        } else {
+            console.error("Uploaded file is not a PDF.");
+            alert("Please upload a valid PDF file.");
+        }
+    }
+    
 
 function handleLogin(){
     const loginButton = document.querySelector('.login-popUp');

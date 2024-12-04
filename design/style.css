@@ -346,6 +346,27 @@ display: inline-block;
     position: relative;
 }
 
+.pdf-render{
+border-radius: 5px;
+}
+
+.pdfContainer{
+  width: 85%; 
+    height: 400px; 
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    overflow-y: auto; 
+    overflow-x: scroll; 
+    position: relative;
+background-color: white;
+}
+
+.pdf-container canvas {
+    display: block;
+    margin: 10px auto; /* Center the canvas */
+    max-width: 100%; /* Ensure responsiveness */
+}
+
 .tick-icon{
   width: 20px;
 }

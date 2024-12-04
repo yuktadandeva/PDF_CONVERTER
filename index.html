@@ -10,6 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
       rel="stylesheet"
     />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
       rel="stylesheet"
@@ -371,41 +372,46 @@
             </div>
 
             <!-- grid box - 2 -->
-            <div class="intro-img">
-              <img
-                src="https://images.hipdf.com/images2024/homepage/free-online-pdf-editor-hipdf.png"
-                alt=""
-              />
+            <div class="pdf-render">
+              <div class="intro-img">
+                <img
+                  src="https://images.hipdf.com/images2024/homepage/free-online-pdf-editor-hipdf.png"
+                  alt=""
+                />
 
-              <div class="intro-sub-img">
-                <div class="grid">
-                  <button class="btn-special">
-                    Edit PDF Files
-                    <div class="parallelogram"></div>
-                  </button>
-                  <p>Upload your files to edit</p>
+                <div class="intro-sub-img">
+                  <div class="grid">
+                    <button class="btn-special">
+                      Edit PDF Files
+                      <div class="parallelogram"></div>
+                    </button>
+                    <p>Upload your files to edit</p>
+                  </div>
                 </div>
-              </div>
 
-              <div class="intro-img-hover grid">
-                <div class="intro-img-hover-inp grid">
-                  <div>
-                    <input
-                      class="inputToBeTriggered"
-                      type="file"
-                      id="pdfInput"
-                      accept="application/pdf"
-                    />
-                    <div class="triggerUpload">
-                      <img
-                        src="https://images.hipdf.com/images2024/translator/icon-translator-add.png"
-                        alt=""
+                <div class="intro-img-hover grid">
+                  <div class="intro-img-hover-inp grid">
+                    <div>
+                      <input
+                        class="inputToBeTriggered"
+                        type="file"
+                        id="pdfInput"
+                        accept="application/pdf"
                       />
+                      <div class="triggerUpload">
+                        <img
+                          src="https://images.hipdf.com/images2024/translator/icon-translator-add.png"
+                          alt=""
+                        />
+                      </div>
+                      <p class="intro-img-hover-desc">
+                        Upload your PDFs to Edit
+                      </p>
                     </div>
-                    <p class="intro-img-hover-desc">Upload your PDFs to Edit</p>
                   </div>
                 </div>
               </div>
+              <div class="edit-buttons"></div>
             </div>
 
             <!-- grid box - 3 -->
