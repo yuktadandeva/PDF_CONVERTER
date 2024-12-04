@@ -1,3 +1,5 @@
+window.addEventListener('DOMContentLoaded',bindEvents);
+
 const globalState = {
     isLoggedIn: false,
     setLoginStatus(status) {
@@ -11,8 +13,6 @@ const globalState = {
         return this.isLoggedIn;
     }
 };
-
-window.addEventListener('DOMContentLoaded',bindEvents);
 
 function bindEvents(){
     // localStorage.clear();
