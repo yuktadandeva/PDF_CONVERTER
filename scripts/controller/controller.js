@@ -15,7 +15,7 @@ const globalState = {
 window.addEventListener('DOMContentLoaded',bindEvents);
 
 function bindEvents(){
-    localStorage.clear();
+    // localStorage.clear();
     handleCarousel();
     triggerUpload();
     handleLogin();
@@ -25,7 +25,7 @@ function bindEvents(){
 }
 
 // async
-function performLoginAuthentication(){
+async function performLoginAuthentication(){
     return new Promise((resolve, reject)=>{
         let email = document.querySelector('#email-address').value ;
         let pswd = document.querySelector('#password').value;
@@ -105,7 +105,6 @@ function triggerUpload(){
         }else{
                 console.log("login pop called by trigger upload");
                 try{
-
                     await loginPopUp(); 
                     console.log(globalState.isLoggedIn, "updated login status");
     
@@ -137,6 +136,8 @@ function handleLogin(){
         console.log("change button text");
         loginButton.innerText = " ";
         loginButton.innerText = "LOGOUT";
+    }else{
+        loginButton.innerText = "LOGIN";
     }
 
     if (loginButton) {
@@ -144,6 +145,10 @@ function handleLogin(){
             event.preventDefault(); 
             console.log("value of login by button", globalState.isLoggedIn)
 
+            if(globalState.getLoginStatus()){
+                globalState.setLoginStatus(false);
+                loginButton.innerText = "LOGIN";
+            }else{
             try {
                 await loginPopUp(); // Wait for login pop-up and authentication
                 console.log(globalState.isLoggedIn, "updated login status");
@@ -157,11 +162,11 @@ function handleLogin(){
             } catch (error) {
                 console.log("Login process canceled or failed:", error);
             }
+        }
 
         });
     } else {
-        console.error("Login button (#login-atn) not found in the DOM.");
-
+        console.error("Login button not found in the DOM.");
     }
 }
 
@@ -180,7 +185,7 @@ async function loginPopUp() {
         });
 
         document.querySelector('#login-atn').addEventListener('click', async () => {
-            
+            event.preventDefault(); 
             try {
                 const message = await performLoginAuthentication();
                 document.querySelector('.login-section').style.display = 'none';
