@@ -183,6 +183,9 @@ img{
     height: auto;
     overflow: hidden; 
     border: 1px solid  rgba(196, 196, 237, 0.393);
+}
+
+.file-grid{
     display: grid;
     grid-template-columns: 0.5fr 2.5fr;
 }
