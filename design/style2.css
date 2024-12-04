@@ -119,6 +119,24 @@ img{
     padding: 7px 0;
 }
 
+.user-icon{
+    position: relative;
+}
+
+.user-icon:hover .dropdown{
+    /* display: block; */
+}
+
+.dropdown{
+    padding: 15px;
+    position: absolute;
+    background-color: white;
+    right: 0;
+    bottom: -100%;
+    box-shadow: 0px 5px 5px 5px grey;
+    display: none;
+}
+
 .grid-item-2{
     padding: 10px;
     place-content: end;
@@ -134,9 +152,9 @@ img{
 }
 /* Main */
 .grid-item-4{
-    display: grid;
+    /* display: grid;
     place-items: center;
-    align-items: center;
+    align-items: center; */
 }
 .file-img{
     width: 150px;
@@ -147,24 +165,34 @@ img{
 }
 
 .file-container-outer {
-    margin: 10px;
+    
     width: 100%;
-    height: 100%;
+    height: auto;
     overflow: hidden; 
     border: 1px solid  rgba(196, 196, 237, 0.393);;
+    display: grid;
+    grid-template-columns: 0.5fr 2.5fr;
+}
+.side-bar{
+   height: 100%;
+    background-color: #D7DDFF;
+}
 
+.sidebar-icon{
+    width: 130px;
 }
 
 .file-container {
-    width: 900px;
+    width: 100%;
     height: 600px; 
     overflow-y: scroll; 
     overflow-x: scroll; 
-    padding: 50px; 
+    /* padding: 50px;  */
     box-sizing: border-box;
 }
 
 .file-nav-btns{
+    width: 100%;
     padding: 20px;
     border-bottom: 1px solid rgba(196, 196, 237, 0.393);
 }

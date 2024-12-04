@@ -42,7 +42,9 @@
           </ul>
           </div>
         </button>
-      </div></section>
+      </div>
+    </section>
+
       <section class="grid-item-3">
         <div class="aside-container">
           <div class="menu-item">
@@ -216,32 +218,44 @@
           </div>
           </div> 
         </div> -->
-        <div>
-          <!-- <button id="prev">Previous</button>
-          <button id="next">Next</button>
-          &nbsp; &nbsp;
-          <span>Page: <span id="page_num"></span> / <span id="page_count"></span></span>
+        <div class="file-nav-btns ">
+          <ul class="flex justify-content align-items">
+            <li class="sidebar-icon""><button><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3.5v17M3 9.4c0-2.24 0-3.36.436-4.216a4 4 0 0 1 1.748-1.748C6.04 3 7.16 3 9.4 3h5.2c2.24 0 3.36 0 4.216.436a4 4 0 0 1 1.748 1.748C21 6.04 21 7.16 21 9.4v5.2c0 2.24 0 3.36-.436 4.216a4 4 0 0 1-1.748 1.748C17.96 21 16.84 21 14.6 21H9.4c-2.24 0-3.36 0-4.216-.436a4 4 0 0 1-1.748-1.748C3 17.96 3 16.84 3 14.6z"/></svg></button></li>
+            <li>
+              <button class="flex align-items justify-content">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#000" d="m7.73 14.596l2.38-3.327h4.884L7.731 5.562zm6.65 5.145q-.382.178-.764.033q-.383-.145-.562-.528L10.13 12.97l-1.94 2.693q-.349.484-.905.307t-.555-.767V5.166q0-.51.457-.728t.86.087l8.004 6.296q.46.367.26.908q-.199.54-.77.54h-3.546l2.879 6.144q.179.383.034.766q-.146.383-.528.562m-4.271-8.472"/></svg>Select</button>
+            </li>|
+            <li>
+              <button class="flex align-items justify-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 256 256"><path fill="#000" d="M252.24 107.76a6 6 0 0 0-8.48 0l-50.35 50.34a2 2 0 0 1-2.82 0L105.9 73.41a2 2 0 0 1 0-2.82l50.34-50.35a6 6 0 0 0-8.48-8.48L97.41 62.1a14 14 0 0 0-1.71 17.71L73.41 102.1a14 14 0 0 0 0 19.8l6.1 6.1l-59.75 59.76a6 6 0 0 0 2.34 9.93l72 24a6 6 0 0 0 6.14-1.45L136 184.49l6.1 6.1a14 14 0 0 0 19.8 0l22.28-22.29a14 14 0 0 0 17.72-1.71l50.34-50.35a6 6 0 0 0 0-8.48M94.38 209.14l-59.27-19.76L88 136.49L127.51 176Zm59-27a2 2 0 0 1-2.82 0l-10.35-10.34l-48-48l-10.31-10.39a2 2 0 0 1 0-2.82l22.1-22.1L175.51 160Z"/></svg>Highlight</button>
+            </li>
+            
+            |
+            <li>
+              <button class="flex align-items justify-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 20 20"><path fill="#000" d="M10.5 6H13v.5a.5.5 0 0 0 1 0v-1a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 1 0V6h2.5v8H9a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-.5zM2 6a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3zm3-2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/></svg>Text</button>
+            </li>
+            <li>
+              <button class="flex align-items justify-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#000" d="M5 3h13a3 3 0 0 1 3 3v13a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3m0 1a2 2 0 0 0-2 2v11.59l4.29-4.3l2.5 2.5l5-5L20 16V6a2 2 0 0 0-2-2zm4.79 13.21l-2.5-2.5L3 19a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2v-1.59l-5.21-5.2zM7.5 6A2.5 2.5 0 0 1 10 8.5A2.5 2.5 0 0 1 7.5 11A2.5 2.5 0 0 1 5 8.5A2.5 2.5 0 0 1 7.5 6m0 1A1.5 1.5 0 0 0 6 8.5A1.5 1.5 0 0 0 7.5 10A1.5 1.5 0 0 0 9 8.5A1.5 1.5 0 0 0 7.5 7"/>
+            </svg>Image
+            </button>
+          </li>
+            <li>
+              <button class="flex align-items justify-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 2048 2048"><path fill="#000" d="M1920 128v1792H128V128zm-128 128H256v1536h1536z"/></svg>Shape</button>
+            </li>
+            |
+            <li>
+              <button class="flex align-items justify-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 256 256"><path fill="#000" d="M225.91 74.79L181.22 30.1a14 14 0 0 0-19.8 0L38.1 153.41a13.94 13.94 0 0 0-4.1 9.9V208a14 14 0 0 0 14 14h44.69a13.94 13.94 0 0 0 9.9-4.1l86.16-86.16l4.61 18.42l-37.6 37.6a6 6 0 1 0 8.49 8.48l40-40a6 6 0 0 0 1.58-5.7l-7.18-28.7l27.26-27.25a14 14 0 0 0 0-19.8M46 208v-33.51L81.52 210H48a2 2 0 0 1-2-2m50-.49L48.48 160L136 72.49L183.52 120ZM217.42 86.1L192 111.52L144.49 64l25.41-25.41a2 2 0 0 1 2.83 0l44.69 44.68a2 2 0 0 1 0 2.83"/></svg>Sign</button>
+            </li>
+          </ul>
         </div>
-        
-        <canvas id="the-canvas"></canvas> -->
 
         <div class="file-container-outer">
-          <div class="file-nav-btns ">
-            <ul class="flex justify-content-around align-items">
-              <li><button >Select</button></li>
-              <li><button>Highlight</button></li>
-              <li><button>Text</button></li>
-              <li><button>Image</button></li>
-              <li><button>Shape</button></li>
-              <li><button>Sign</button></li>
-            </ul>
-          </div>
-<div class="file-container">
+          
+          <div class="side-bar"></div>
+<div class="file-container"></div>
 
-</div>
         </div>
       </section>
-        </div>
+        
       
     </div>
   </body>
