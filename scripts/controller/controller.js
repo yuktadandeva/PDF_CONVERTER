@@ -101,7 +101,8 @@ function triggerUpload(){
         }
 
         if(globalState.getLoginStatus()){
-                window.location.href = '/PDF_CONVERTER/desktop.html'; 
+                // window.location.href = '/PDF_CONVERTER/desktop.html'; 
+                displayUploadedFile( fileInput.files[0]);
         }else{
                 console.log("login pop called by trigger upload");
                 try{
@@ -110,7 +111,8 @@ function triggerUpload(){
     
                     if(globalState.isLoggedIn){
                         console.log(globalState.isLoggedIn, "login status inside redirecting block");
-                        window.location.href = '/PDF_CONVERTER/desktop.html'; 
+                        // window.location.href = '/PDF_CONVERTER/desktop.html'; 
+                        displayUploadedFile(fileInput.files[0]);
                     }else{
                         alert("error in logging in");
                     }
@@ -120,21 +122,25 @@ function triggerUpload(){
                     alert("error in opening pop up")
 
                 }
-               
-
-            }
-       
-    
+            }    
     });
     
 }
 
+function displayUploadedFile(file){
+    document.querySelector('.intro-img').innerHTML = "";
+
+    const mainDiv = document.createElement('div');
+    mainDiv.style.width = '100%';
+    mainDiv.style.height = '300px';
+    mainDiv.style.overflow = 'hidden';
+
+    const img = document.createElement('img');
+}
 
 function handleLogin(){
     const loginButton = document.querySelector('.login-popUp');
     if(globalState.getLoginStatus()){
-        console.log("change button text");
-        loginButton.innerText = " ";
         loginButton.innerText = "LOGOUT";
     }else{
         loginButton.innerText = "LOGIN";
@@ -184,7 +190,7 @@ async function loginPopUp() {
             reject("Login pop-up closed by user");
         });
 
-        document.querySelector('#login-atn').addEventListener('click', async () => {
+        document.querySelector('#login-atn').addEventListener('click', async (event) => {
             event.preventDefault(); 
             try {
                 const message = await performLoginAuthentication();
