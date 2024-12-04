@@ -57,6 +57,18 @@ img{
     color: white;
 }
 
+.btn-primary:hover{
+    background-color: darkblue;
+    color: white;
+    transform: scale(1.05);
+}
+
+.btn-secondary:hover{
+  color: rgb(177, 177, 177);
+  transform: scale(1.05);
+
+}
+
 .btn-tertiary{
     padding: 7px 13px;
     border: none;
@@ -79,6 +91,7 @@ img{
     background-color: #D7DDFF;
     /* border: 1px solid red; */
 }
+
 
 .aside-container{
     padding: 10px;
@@ -177,6 +190,23 @@ img{
    height: 100%;
     background-color: rgba(196, 196, 237, 0.393);
 }
+
+.none{
+    display: none;
+}
+
+/* .animate{
+    animation: slide 1s ease-in-out forwards;
+}
+
+@keyframes slide {
+    0%{
+        transform: translate(-100%);
+    }100%{
+        transform: translate(0);
+    }
+    
+} */
 
 .sidebar-icon{
     width: 130px;

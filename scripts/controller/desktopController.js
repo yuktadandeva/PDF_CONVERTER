@@ -17,7 +17,9 @@ function handleUserIcon(){
 }
 
 function handleSideBar(){
-    
+    document.querySelector('.sidebar-icon').addEventListener('click',()=>{
+        document.querySelector('.side-bar').classList.toggle('none');
+    })
 }
 
 function retrieveFile(){
