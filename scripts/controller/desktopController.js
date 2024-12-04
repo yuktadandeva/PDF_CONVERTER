@@ -13,8 +13,11 @@ function handleUserIcon(){
         dropdown.addEventListener('mouseleave',()=>{
             dropdown.style.display = "none";
         })
-
     })
+}
+
+function handleSideBar(){
+    
 }
 
 function retrieveFile(){

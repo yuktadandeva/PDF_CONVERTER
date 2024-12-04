@@ -123,8 +123,9 @@ img{
     position: relative;
 }
 
-.user-icon:hover{
-   background-color: grey;
+.user-icon:hover, .notification:hover{
+    border-radius: 5px;
+    background-color: rgb(196, 196, 237);
 }
 
 .dropdown{
