@@ -123,8 +123,8 @@ img{
     position: relative;
 }
 
-.user-icon:hover .dropdown{
-    /* display: block; */
+.user-icon:hover{
+   background-color: grey;
 }
 
 .dropdown{
@@ -165,17 +165,16 @@ img{
 }
 
 .file-container-outer {
-    
     width: 100%;
     height: auto;
     overflow: hidden; 
-    border: 1px solid  rgba(196, 196, 237, 0.393);;
+    border: 1px solid  rgba(196, 196, 237, 0.393);
     display: grid;
     grid-template-columns: 0.5fr 2.5fr;
 }
 .side-bar{
    height: 100%;
-    background-color: #D7DDFF;
+    background-color: rgba(196, 196, 237, 0.393);
 }
 
 .sidebar-icon{
