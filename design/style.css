@@ -1323,7 +1323,10 @@ background-color: rgba(255, 255, 255, 0.603);
 
   .conveyor-item{
     width: 50px;
-   
+  }
+
+  .conveyor-item img{
+    width: 40px !important;
   }
 
 
