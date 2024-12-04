@@ -178,6 +178,13 @@ img{
     display: none;
 }
 
+.side-bar-img{
+    background-color: blue;
+    width: 120px;
+    height: 180px;
+    margin: 10px;
+}
+
 .file-container-outer {
     width: 100%;
     height: auto;
@@ -190,7 +197,9 @@ img{
     grid-template-columns: 0.5fr 2.5fr;
 }
 .side-bar{
-   height: 100%;
+    display: flex;
+    justify-content: space-around;
+    height: 100%;
     background-color: rgba(196, 196, 237, 0.393);
 }
 
