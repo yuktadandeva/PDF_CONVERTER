@@ -132,8 +132,37 @@ function displayUploadedFile(file){
         const container = document.querySelector('.pdf-render');
         container.innerHTML = "";
 
+        // document.querySelector('.edit-buttons').style.display = 'block';
+
         const pdfContainer = document.createElement('div');
         pdfContainer.className = 'pdfContainer';
+
+        const btnDiv = document.createElement('div');
+        btnDiv.className = 'btnDiv';
+        
+
+        const btn1 = document.createElement('button');
+        btn1.className = 'btn-special';
+        btn1.innerText = 'Edit PDF file';
+        
+        const pll = document.createElement('div');
+        pll.className = 'parallelogram';
+
+        btn1.appendChild(pll);
+     
+
+        const btn2 = document.createElement('button');
+        btn2.className = 'btn-special';
+        btn2.innerText = 'OCR PDF';
+        
+        const pll2 = document.createElement('div');
+        pll2.className = 'parallelogram';
+
+        btn2.appendChild(pll2);
+
+        btnDiv.appendChild(btn1);
+        btnDiv.appendChild(btn2);
+        container.appendChild(btnDiv);
     
         if (file.type === "application/pdf") {
             const reader = new FileReader();
@@ -146,32 +175,32 @@ function displayUploadedFile(file){
                 // pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://mozilla.github.io/pdf.js/build/pdf.worker.js';
     
                
-                pdfjsLib.getDocument({ data: pdfData }).promise.then(async pdf => {
+                pdfjsLib.getDocument({ data: pdfData }).promise.then(pdf => {
+                    pdf.getPage(1).then(page => {
+                        console.log("Rendering the first page");
     
-                    for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
-                        const page = await pdf.getPage(pageNum);
-                        console.log(`Rendering page ${pageNum}`);
-    
-                       
                         const viewport = page.getViewport({ scale: 0.5 }); 
                         const canvas = document.createElement('canvas');
                         const context = canvas.getContext('2d');
                         canvas.width = viewport.width;
                         canvas.height = viewport.height;
     
-                        // Render the page into the canvas
-                        await page.render({
+                        
+                        const renderContext = {
                             canvasContext: context,
                             viewport: viewport
-                        }).promise;
+                        };
     
-                        // Append the canvas to the container
-                        const pageContainer = document.createElement('div');
-                        pageContainer.style.marginBottom = '10px';
-                        pageContainer.appendChild(canvas);
-                        pdfContainer.appendChild(pageContainer)
-                        container.appendChild(pdfContainer);
-                    }
+                        page.render(renderContext).promise.then(() => {
+                            console.log("Page rendered");
+    
+                           const p = document.createElement('p');
+                           p.innerText = file.name;
+                          
+                            document.querySelector('.pdf-render').appendChild(canvas);
+                            document.querySelector('.pdf-render').appendChild(p);
+                        });
+                    });
                 }).catch(err => {
                     console.error("Error loading the PDF:", err);
                 });

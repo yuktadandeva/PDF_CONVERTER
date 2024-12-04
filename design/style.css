@@ -348,6 +348,7 @@ display: inline-block;
 
 .pdf-render{
 border-radius: 5px;
+position: relative;
 }
 
 .pdfContainer{
@@ -359,6 +360,16 @@ border-radius: 5px;
     overflow-x: scroll; 
     position: relative;
 background-color: white;
+}
+
+.btnDiv{
+  position: absolute;
+  right: -40%;
+  top: 30%;
+}
+
+.btnDiv button{
+  margin: 10px;
 }
 
 .pdf-container canvas {
