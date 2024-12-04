@@ -367,6 +367,21 @@ align-items: center;
 background-color: white;
 }
 
+.delete-icon{
+  display: none;
+  position: absolute;
+  left: 10px;
+  bottom: 30px;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.delete-icon:hover{
+  transform: scale(1.05);
+  transition: all 0.5s ease;
+}
+
 .btnDiv{
   /* position: absolute;
   right: -40%;

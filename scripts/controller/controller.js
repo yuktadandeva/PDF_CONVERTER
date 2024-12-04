@@ -134,12 +134,13 @@ function triggerUpload(){
 function displayUploadedFile(file){
    
         const container = document.querySelector('.pdf-render');
-        container.innerHTML = "";
+
+        document.querySelector('.intro-img').innerHTML = "";
 
         // document.querySelector('.edit-buttons').style.display = 'block';
 
-        const pdfContainer = document.createElement('div');
-        pdfContainer.className = 'pdfContainer';
+        // const pdfContainer = document.createElement('div');
+        // pdfContainer.className = 'pdfContainer';
 
         const btnDiv = document.createElement('div');
         btnDiv.className = 'btnDiv';
@@ -170,7 +171,14 @@ function displayUploadedFile(file){
         aTag.appendChild(btn1);
         btnDiv.appendChild(aTag);
         btnDiv.appendChild(btn2);
-    
+
+        const deleteIcon = document.querySelector('.delete-icon');
+        deleteIcon.style.display = "block";
+        deleteIcon.addEventListener('click',()=>{
+            location.reload();
+        })
+        
+    console.log(document.querySelector('.delete-icon'))
         if (file.type === "application/pdf") {
             const reader = new FileReader();
             reader.onloadend = function () {
