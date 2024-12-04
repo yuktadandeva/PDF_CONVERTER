@@ -101,6 +101,8 @@ function triggerUpload(){
         }
 
         if(globalState.getLoginStatus()){
+            
+
                 // window.location.href = '/PDF_CONVERTER/desktop.html'; 
                 displayUploadedFile( fileInput.files[0]);
         }else{
@@ -108,9 +110,11 @@ function triggerUpload(){
                 try{
                     await loginPopUp(); 
                     console.log(globalState.isLoggedIn, "updated login status");
-    
+
                     if(globalState.isLoggedIn){
                         console.log(globalState.isLoggedIn, "login status inside redirecting block");
+                        const loginButton = document.querySelector('.login-popUp');
+                        loginButton.innerText = 'LOGOUT';
                         // window.location.href = '/PDF_CONVERTER/desktop.html'; 
                         displayUploadedFile(fileInput.files[0]);
                     }else{
@@ -154,15 +158,18 @@ function displayUploadedFile(file){
         const btn2 = document.createElement('button');
         btn2.className = 'btn-special';
         btn2.innerText = 'OCR PDF';
+
+        const aTag = document.createElement('a');
+        aTag.href = '/PDF_CONVERTER/desktop.html';
         
         const pll2 = document.createElement('div');
         pll2.className = 'parallelogram';
 
         btn2.appendChild(pll2);
 
-        btnDiv.appendChild(btn1);
+        aTag.appendChild(btn1);
+        btnDiv.appendChild(aTag);
         btnDiv.appendChild(btn2);
-        container.appendChild(btnDiv);
     
         if (file.type === "application/pdf") {
             const reader = new FileReader();
@@ -197,8 +204,12 @@ function displayUploadedFile(file){
                            const p = document.createElement('p');
                            p.innerText = file.name;
                           
-                            document.querySelector('.pdf-render').appendChild(canvas);
-                            document.querySelector('.pdf-render').appendChild(p);
+                           const div = document.createElement('div');
+
+                            div.appendChild(canvas);
+                            div.appendChild(p);
+                            container.appendChild(div);
+                            container.appendChild(btnDiv);
                         });
                     });
                 }).catch(err => {
@@ -212,7 +223,7 @@ function displayUploadedFile(file){
             console.error("Uploaded file is not a PDF.");
             alert("Please upload a valid PDF file.");
         }
-    }
+}
     
 
 function handleLogin(){

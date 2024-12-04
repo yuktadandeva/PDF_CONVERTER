@@ -349,8 +349,13 @@ display: inline-block;
 .pdf-render{
 border-radius: 5px;
 position: relative;
+display: flex;
+align-items: center;
 }
-
+.pdf-render p{
+  color: darkblue;
+  text-align: center;
+}
 .pdfContainer{
   width: 85%; 
     height: 400px; 
@@ -363,12 +368,13 @@ background-color: white;
 }
 
 .btnDiv{
-  position: absolute;
+  /* position: absolute;
   right: -40%;
-  top: 30%;
+  top: 30%; */
 }
 
 .btnDiv button{
+  font-size: large;
   margin: 10px;
 }
 
